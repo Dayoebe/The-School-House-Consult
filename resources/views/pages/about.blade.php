@@ -9,6 +9,7 @@
 </div>
 </div>
 </section>
+<div class="container about-illustration"><x-editorial-image name="education-collaboration" alt="Conceptual illustration of collaborative education planning." caption="Education moves forward through shared thinking." /></div>
 <section class="section section-soft">
 <div class="container grid-two">
 <article class="statement-card">
@@ -17,8 +18,12 @@
 </article>
 <article class="statement-card">
 <p class="eyebrow">Our vision</p>
-<h2>Looking ahead, together.</h2>
-<p>Our official vision statement will be shared here once confirmed.</p>
+@if(config('site.vision'))
+    <h2>{{ config('site.vision') }}</h2>
+@else
+    <h2>Vision statement</h2>
+    <p>Our official vision statement will be shared here once confirmed.</p>
+@endif
 </article>
 </div>
 </section>

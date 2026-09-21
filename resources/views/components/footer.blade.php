@@ -2,7 +2,7 @@
 <div class="container">
 <div class="footer-grid">
 <div>
-<x-brand />
+<x-brand footer />
 <p>{{ config('site.tagline') }}</p>
 <p>Strategic educational solutions for schools, educators and communities.</p>
 </div>
@@ -17,7 +17,13 @@
 <a href="{{ route('services.index') }}">School improvement</a>
 <a href="{{ route('services.index') }}">Explore all services ↗</a>
 <h2 class="footer-subheading">Social channels</h2>
-<p>Official links coming soon.</p>
+@forelse(config('site.social_links') as $label => $url)
+    @if(filter_var($url, FILTER_VALIDATE_URL) && in_array(parse_url($url, PHP_URL_SCHEME), ['http', 'https']))
+        <a href="{{ $url }}" rel="noopener noreferrer">{{ $label }}</a>
+    @endif
+@empty
+    <p>Official links coming soon.</p>
+@endforelse
 </div>
 <div>
 <h2>Let's connect</h2>
@@ -27,6 +33,7 @@
 <a href="{{ config('site.whatsapp') }}">WhatsApp Us ↗</a>
 </div>
 </div>
+<p class="imagery-disclosure">Our editorial illustrations are AI-generated concepts, not photographs of staff, clients or events. The Principal Consultant photograph is supplied.</p>
 <div class="footer-bottom">
 <p>© {{ date('Y') }} The School House Consult. All rights reserved.</p>
 <a href="{{ route('contact') }}#consultation">Request a Consultation ↗</a>

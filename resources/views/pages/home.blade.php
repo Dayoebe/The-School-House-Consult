@@ -22,19 +22,10 @@
 </span>
 </div>
 </div>
-<div class="hero-visual">
-<div class="hero-photo">
-<img src="{{ asset('images/adedamola-ogidan.jpeg') }}" alt="Adedamola Ogidan, Principal Consultant at The School House Consult" width="864" height="1080" fetchpriority="high">
-<div class="portrait-caption">
-<span>Adedamola Ogidan</span>
-<small>Principal Consultant</small>
-</div>
-</div>
-<div class="hero-note">
-<x-icon name="book" />
-<span>Better education begins<br>with purposeful partnership.</span>
-</div>
-<span class="vertical-label">THE SCHOOL HOUSE CONSULT</span>
+<div class="hero-visual hero-illustration">
+<x-editorial-image name="education-collaboration" alt="Conceptual illustration of education professionals planning together around an open book." caption="A shared purpose. A thoughtful approach." priority />
+<div class="hero-note"><x-icon name="book" /><span>Better education begins<br>with purposeful partnership.</span></div>
+
 </div>
 </div>
 </section>
@@ -73,7 +64,8 @@
 <a class="text-link" href="{{ route('services.index') }}">View all services <span aria-hidden="true">↗</span>
 </a>
 </div>
-<div class="grid-three">
+<p class="swipe-hint">Swipe to explore our expertise <span aria-hidden="true">→</span></p>
+<div class="grid-three mobile-service-rail" tabindex="0" role="region" aria-label="Our education consulting services">
 @foreach($services as $service)<x-service-card :service="$service" />
 @endforeach</div>
 </div>
@@ -114,7 +106,10 @@
 <a class="text-link" href="{{ route('programs.index') }}">Explore training <span aria-hidden="true">↗</span>
 </a>
 </div>
-<x-training-categories />
+<div class="learning-feature">
+<x-editorial-image name="professional-learning" alt="Conceptual illustration of an educator leading a professional learning discussion." caption="Room to learn. Space to grow." />
+<div><x-training-categories /><a class="text-link" href="{{ route('contact') }}#consultation">Discuss your team's learning needs ↗</a></div>
+</div>
 @if($programs->isNotEmpty())<div class="grid-three">
 @foreach($programs as $program)<x-program-card :program="$program" />
 @endforeach</div>

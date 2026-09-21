@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ $title ?? 'Education Consulting' }} | The School House Consult</title>
 <meta name="description" content="{{ $description ?? config('site.mission') }}">
 <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
@@ -20,8 +20,15 @@
 <meta name="theme-color" content="#0B2A5B">
 @isset($robots)<meta name="robots" content="{{ $robots }}">
 @endisset
-<link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
-<script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org', '@type'=>'Organization', 'name'=>config('site.name'), 'url'=>url('/'), 'description'=>config('site.mission'), 'email'=>config('site.email'), 'telephone'=>array_values(config('site.phones')), 'address'=>['@type'=>'PostalAddress','streetAddress'=>'First Floor Ekundayo House, Oda Road','addressLocality'=>'Akure','addressRegion'=>'Ondo State','addressCountry'=>'NG']], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
+<link rel="icon" href="{{ asset('images/brand/icon-32.png') }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ asset('images/brand/icon-180.png') }}" sizes="180x180">
+<link rel="manifest" href="{{ asset('site.webmanifest') }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="School House">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="application-name" content="School House Consult">
+<meta name="school-house-service-worker" content="{{ asset('sw.js') }}">
+<script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org', '@type'=>'Organization', 'name'=>config('site.name'), 'logo'=>asset(config('site.logo')), 'url'=>url('/'), 'description'=>config('site.mission'), 'email'=>config('site.email'), 'telephone'=>array_values(config('site.phones')), 'address'=>['@type'=>'PostalAddress','streetAddress'=>'First Floor Ekundayo House, Oda Road','addressLocality'=>'Akure','addressRegion'=>'Ondo State','addressCountry'=>'NG']], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @isset($publishedArticle)<script type="application/ld+json">{!! json_encode(array_filter(['@context'=>'https://schema.org','@type'=>'Article','headline'=>$publishedArticle->title,'description'=>$publishedArticle->excerpt,'datePublished'=>$publishedArticle->published_at->toIso8601String(),'dateModified'=>$publishedArticle->updated_at->toIso8601String(),'author'=>$publishedArticle->author ? ['@type'=>'Person','name'=>$publishedArticle->author] : null,'mainEntityOfPage'=>$canonical,'image'=>$image]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @endisset
 @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,5 +39,7 @@
 <x-navbar />
 <main id="main-content">{{ $slot }}</main>
 <x-footer />
+<x-mobile-navigation />
+<div class="connection-notice" data-connection-notice role="status" hidden>You’re offline. Reconnect before sending an enquiry.</div>
 @livewireScripts</body>
 </html>
