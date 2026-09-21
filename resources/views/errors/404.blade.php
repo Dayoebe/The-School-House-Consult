@@ -1,1 +1,10 @@
-@component('layouts.app', ['title' => 'Page Not Found', 'description' => "The page you're looking for may have moved or no longer exists.", 'robots' => 'noindex, follow'])<section class="error-page container"><p class="eyebrow">404 / A different direction</p><h1>Page Not Found</h1><p>The page you're looking for may have moved or no longer exists.</p><div class="button-row"><a class="button" href="{{ route('home') }}">Return Home ↗</a><a class="button button-outline" href="{{ route('services.index') }}">Explore Services</a></div></section>@endcomponent
+@component('layouts.app', ['title' => 'Page Not Found', 'description' => "The page you're looking for may have moved or no longer exists.", 'robots' => 'noindex, follow'])<section class="error-page container">
+<p class="eyebrow">404 / A different direction</p>
+<h1>Page Not Found</h1>
+<p>The page you're looking for may have moved or no longer exists.</p>
+<div class="button-row">
+<a class="button" href="{{ route('home') }}">Return Home ↗</a>
+<a class="button button-outline" href="{{ route('services.index') }}">Explore Services</a>
+</div>
+</section>
+@endcomponent

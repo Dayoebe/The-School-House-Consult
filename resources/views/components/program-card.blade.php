@@ -1,1 +1,12 @@
-@props(['program'])<article class="content-card">@if($program->featured_image)<img class="card-image" src="{{ asset($program->featured_image) }}" alt="" width="640" height="400" loading="lazy">@endif<div class="card-body"><p class="eyebrow">Programs & Training</p><h3>{{ $program->title }}</h3><p>{{ Str::limit($program->description, 180) }}</p>@if($program->target_audience)<p>{{ $program->target_audience }}</p>@endif @if($program->duration)<p>Duration: {{ $program->duration }}</p>@endif<a class="text-link" href="{{ route('programs.show', $program) }}">Explore program <span aria-hidden="true">↗</span></a></div></article>
+@props(['program'])<article class="content-card">
+@if($program->featured_image)<img class="card-image" src="{{ asset($program->featured_image) }}" alt="" width="640" height="400" loading="lazy">
+@endif<div class="card-body">
+<p class="eyebrow">Programs & Training</p>
+<h3>{{ $program->title }}</h3>
+<p>{{ Str::limit($program->description, 180) }}</p>
+@if($program->target_audience)<p>{{ $program->target_audience }}</p>
+@endif @if($program->duration)<p>Duration: {{ $program->duration }}</p>
+@endif<a class="text-link" href="{{ route('programs.show', $program) }}">Explore program <span aria-hidden="true">↗</span>
+</a>
+</div>
+</article>

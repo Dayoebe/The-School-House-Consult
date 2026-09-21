@@ -1,1 +1,59 @@
-<x-page-hero eyebrow="About us" title="A shared commitment to education." text="The School House Consult brings stakeholders together around educational challenges, opportunities and development needs." /><section class="section"><div class="container intro-grid"><x-section-heading eyebrow="Who we are" title="Partnership at the heart of progress." /><div><p class="large-copy">We are an education consulting company based in Akure, Ondo State, Nigeria.</p><p>Our work spans educational research, curriculum development, professional learning, leadership, school improvement and stakeholder engagement.</p><p>We work with schools, educators and communities to develop practical solutions that promote educational excellence.</p></div></div></section><section class="section section-soft"><div class="container grid-two"><article class="statement-card"><p class="eyebrow">Our mission</p><h2>{{ config('site.mission') }}</h2></article><article class="statement-card"><p class="eyebrow">Our vision</p><h2>Looking ahead, together.</h2><p>Our official vision statement will be shared here once confirmed.</p></article></div></section><section class="section"><div class="container"><x-section-heading eyebrow="Our approach" title="Understand. Collaborate. Develop." /><div class="grid-three approach-cards">@foreach(['Understand the context'=>'Listen to the needs, priorities and perspectives of those involved.', 'Work together'=>'Bring stakeholders into purposeful conversations and planning.', 'Plan practical steps'=>'Connect educational priorities to considered actions and professional learning.'] as $heading=>$copy)<article><span class="eyebrow">0{{ $loop->iteration }}</span><h3>{{ $heading }}</h3><p>{{ $copy }}</p></article>@endforeach</div></div></section><section class="section section-soft"><div class="container"><x-section-heading eyebrow="Who we serve" title="Education is a shared endeavour." /><x-audiences /></div></section><section class="section"><div class="container"><div class="section-top"><x-section-heading eyebrow="Areas of expertise" title="Support across the educational landscape." /><a class="text-link" href="{{ route('services.index') }}">Explore all 13 services ↗</a></div><div class="grid-three">@foreach($services->take(3) as $service)<x-service-card :service="$service" />@endforeach</div></div></section><section class="section section-soft"><div class="container">@if($member = $team->first())<x-team-card :member="$member" />@endif</div></section><x-cta />
+<x-page-hero eyebrow="About us" title="A shared commitment to education." text="The School House Consult brings stakeholders together around educational challenges, opportunities and development needs." />
+<section class="section">
+<div class="container intro-grid">
+<x-section-heading eyebrow="Who we are" title="Partnership at the heart of progress." />
+<div>
+<p class="large-copy">We are an education consulting company based in Akure, Ondo State, Nigeria.</p>
+<p>Our work spans educational research, curriculum development, professional learning, leadership, school improvement and stakeholder engagement.</p>
+<p>We work with schools, educators and communities to develop practical solutions that promote educational excellence.</p>
+</div>
+</div>
+</section>
+<section class="section section-soft">
+<div class="container grid-two">
+<article class="statement-card">
+<p class="eyebrow">Our mission</p>
+<h2>{{ config('site.mission') }}</h2>
+</article>
+<article class="statement-card">
+<p class="eyebrow">Our vision</p>
+<h2>Looking ahead, together.</h2>
+<p>Our official vision statement will be shared here once confirmed.</p>
+</article>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<x-section-heading eyebrow="Our approach" title="Understand. Collaborate. Develop." />
+<div class="grid-three approach-cards">
+@foreach(['Understand the context'=>'Listen to the needs, priorities and perspectives of those involved.', 'Work together'=>'Bring stakeholders into purposeful conversations and planning.', 'Plan practical steps'=>'Connect educational priorities to considered actions and professional learning.'] as $heading=>$copy)<article>
+<span class="eyebrow">0{{ $loop->iteration }}</span>
+<h3>{{ $heading }}</h3>
+<p>{{ $copy }}</p>
+</article>
+@endforeach</div>
+</div>
+</section>
+<section class="section section-soft">
+<div class="container">
+<x-section-heading eyebrow="Who we serve" title="Education is a shared endeavour." />
+<x-audiences />
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-top">
+<x-section-heading eyebrow="Areas of expertise" title="Support across the educational landscape." />
+<a class="text-link" href="{{ route('services.index') }}">Explore all 13 services ↗</a>
+</div>
+<div class="grid-three">
+@foreach($services->take(3) as $service)<x-service-card :service="$service" />
+@endforeach</div>
+</div>
+</section>
+<section class="section section-soft">
+<div class="container">
+@if($member = $team->first())<x-team-card :member="$member" />
+@endif</div>
+</section>
+<x-cta />

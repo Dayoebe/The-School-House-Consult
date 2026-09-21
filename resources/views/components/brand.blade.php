@@ -1,1 +1,5 @@
-<a class="brand" href="{{ route('home') }}" aria-label="The School House Consult home"><span class="brand-name">THE SCHOOL HOUSE<span>CONSULT<span class="brand-dot">.</span></span></span></a>
+<a class="brand" href="{{ route('home') }}" aria-label="The School House Consult home">
+<span class="brand-name">THE SCHOOL HOUSE<span>CONSULT<span class="brand-dot">.</span>
+</span>
+</span>
+</a>

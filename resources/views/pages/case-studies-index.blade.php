@@ -1,1 +1,11 @@
-<x-page-hero eyebrow="Case studies" title="Education in practice." text="A space for project stories, shared learning and reflections on educational development." /><section class="section"><div class="container">@if($caseStudies->isEmpty())<x-empty-state title="Our project stories will live here" text="Case studies will be published as our projects and impact stories become available." />@else<div class="grid-three">@foreach($caseStudies as $caseStudy)<x-case-study-card :case-study="$caseStudy" />@endforeach</div><div class="pagination">{{ $caseStudies->links() }}</div>@endif</div></section><x-cta />
+<x-page-hero eyebrow="Case studies" title="Education in practice." text="A space for project stories, shared learning and reflections on educational development." />
+<section class="section">
+<div class="container">
+@if($caseStudies->isEmpty())<x-empty-state title="Our project stories will live here" text="Case studies will be published as our projects and impact stories become available." />
+@else<div class="grid-three">
+@foreach($caseStudies as $caseStudy)<x-case-study-card :case-study="$caseStudy" />
+@endforeach</div>
+<div class="pagination">{{ $caseStudies->links() }}</div>
+@endif</div>
+</section>
+<x-cta />

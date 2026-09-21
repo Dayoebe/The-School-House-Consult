@@ -1,1 +1,2 @@
-<div>@include('pages.'.str_replace('.', '-', $page))</div>
+<div>
+@include('pages.'.str_replace('.', '-', $page))</div>
