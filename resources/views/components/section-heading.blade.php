@@ -1,0 +1,1 @@
+@props(['eyebrow' => '', 'title', 'text' => null])<div {{ $attributes->merge(['class' => 'section-heading']) }}>@if($eyebrow)<p class="eyebrow">{{ $eyebrow }}</p>@endif<h2>{{ $title }}</h2>@if($text)<p class="section-intro">{{ $text }}</p>@endif</div>

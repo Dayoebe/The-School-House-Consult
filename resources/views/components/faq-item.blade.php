@@ -1,0 +1,1 @@
+@props(['faq'])<details class="faq-item"><summary>{{ $faq->question }}<span aria-hidden="true">+</span></summary><p>{{ $faq->answer }}</p></details>
