@@ -1,27 +1,29 @@
-<section x-data="{ loaded: false }" x-init="requestAnimationFrame(() => loaded = true)" class="relative overflow-hidden border-b border-[#e8dfd4] bg-[linear-gradient(135deg,#fffaf2_0%,#f6eee4_58%,#dce9e3_100%)]">
-<div class="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(15,118,110,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,118,110,.08)_1px,transparent_1px)] [background-size:42px_42px]"></div>
-<div class="relative mx-auto grid w-[calc(100%-96px)] max-w-[1240px] grid-cols-[1.08fr_1fr] items-center gap-16 py-[88px] max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-8 max-[767px]:grid-cols-1 max-[640px]:w-[calc(100%-40px)] max-[640px]:gap-9 max-[640px]:py-12">
+<section x-data="{ loaded: false }" x-init="requestAnimationFrame(() => loaded = true)" class="relative overflow-hidden bg-[#10243d] text-white">
+<div class="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:52px_52px]"></div>
+<div class="pointer-events-none absolute -right-24 top-[-140px] h-[420px] w-[420px] rounded-full border-[70px] border-teal/20"></div>
+<div class="relative mx-auto grid min-h-[670px] w-[calc(100%-96px)] max-w-[1240px] grid-cols-[1.03fr_1fr] items-center gap-16 py-20 max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-8 max-[767px]:grid-cols-1 max-[767px]:py-14 max-[640px]:w-[calc(100%-40px)] max-[640px]:gap-10 max-[640px]:py-12">
 <div class="relative z-[1] py-2.5 max-[640px]:py-0">
-<p class="mb-5 flex items-center gap-2.5 text-[10px] font-bold uppercase leading-[1.65] tracking-[.15em] text-orange"><span class="h-0.5 w-7 shrink-0 bg-orange"></span>Education. Collaboration. Excellence.</p>
-<h1 :class="loaded ? 'animate__animated animate__fadeInUp' : 'opacity-0'" class="mb-[25px] max-w-[720px] font-display text-[clamp(58px,6.8vw,98px)] font-semibold leading-[.96] tracking-[-.065em] text-navy max-[1190px]:text-[68px] max-[640px]:text-[clamp(48px,13vw,72px)]">Shaping the<br>Future of<br>
-<span class="text-teal">Education</span><span class="text-coral max-[640px]:hidden">.</span>
+<p class="mb-6 flex items-center gap-3 text-[10px] font-bold uppercase leading-[1.65] tracking-[.2em] text-[#ffb19e]"><span class="h-2 w-2 rounded-full bg-coral shadow-[0_0_0_6px_rgba(239,111,97,.18)]"></span>Independent education consultancy</p>
+<h1 :class="loaded ? 'animate__animated animate__fadeInUp' : 'opacity-0'" class="mb-7 max-w-[720px] font-display text-[clamp(58px,6.8vw,98px)] font-semibold leading-[.9] tracking-[-.07em] text-white max-[1190px]:text-[68px] max-[640px]:text-[clamp(48px,13vw,72px)]">Shaping the<br>future of<br>
+<span class="text-[#7ed8c2]">education</span><span class="text-coral max-[640px]:hidden">.</span>
 </h1>
-<p :class="loaded ? 'animate__animated animate__fadeInUp animate__delay-1s' : 'opacity-0'" class="max-w-[465px] text-[20px] leading-[1.5] text-[#294b56] max-[1190px]:text-[17px] max-[640px]:text-[17px]">Strategic educational solutions for schools, educators and communities.</p>
-<p class="mt-[17px] max-w-[445px] text-[14px] leading-[1.75] text-muted">The School House Consult partners with stakeholders to develop practical solutions that promote educational excellence.</p>
+<p :class="loaded ? 'animate__animated animate__fadeInUp animate__delay-1s' : 'opacity-0'" class="max-w-[465px] text-[20px] leading-[1.5] text-[#d7e4e8] max-[1190px]:text-[17px] max-[640px]:text-[17px]">Strategic educational solutions for schools, educators and communities.</p>
+<p class="mt-[17px] max-w-[445px] text-[14px] leading-[1.75] text-[#9fb4bf]">The School House Consult partners with stakeholders to develop practical solutions that promote educational excellence.</p>
 <div class="mt-[30px] flex flex-wrap gap-3 max-[640px]:grid max-[640px]:grid-cols-1 max-[640px]:gap-2.5">
 <a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-coral bg-coral px-6 py-4 text-[13px] font-bold text-white shadow-[0_12px_25px_rgba(239,111,97,.22)] transition hover:-translate-y-0.5 hover:bg-[#df5e51] max-[640px]:min-h-[51px]" href="{{ route('services.index') }}">Explore Our Services <span class="text-[20px]" aria-hidden="true">↗</span>
 </a>
-<a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-navy/20 bg-white/70 px-6 py-4 text-[13px] font-bold text-navy shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-navy hover:bg-white max-[640px]:min-h-[47px]" href="{{ route('contact') }}#consultation">Request a Consultation</a>
+<a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-[13px] font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-navy max-[640px]:min-h-[47px]" href="{{ route('contact') }}#consultation">Request a Consultation</a>
 </div>
-<div class="mt-[31px] flex items-center gap-3.5 text-[11px] leading-[1.6] text-[#667085] max-[640px]:hidden">
-<span class="grid h-[37px] w-[37px] place-items-center rounded-full border border-[#cbd4e1] text-[20px] text-navy" aria-hidden="true">↗</span><span>Rooted in collaboration.<br>
-<strong class="font-semibold text-navy">Focused on education.</strong>
+<div class="mt-10 flex items-center gap-3.5 text-[11px] leading-[1.6] text-[#9fb4bf] max-[640px]:hidden">
+<span class="grid h-[37px] w-[37px] place-items-center rounded-full border border-white/20 text-[20px] text-[#7ed8c2]" aria-hidden="true">↗</span><span>Rooted in collaboration.<br>
+<strong class="font-semibold text-white">Focused on education.</strong>
 </span>
 </div>
 </div>
-<div :class="loaded ? 'animate__animated animate__fadeInRight animate__delay-1s' : 'opacity-0'" class="relative px-0 pb-7 max-[767px]:mx-auto max-[767px]:w-full max-[767px]:max-w-[430px] max-[640px]:pb-3.5">
+<div :class="loaded ? 'animate__animated animate__fadeInRight animate__delay-1s' : 'opacity-0'" class="relative px-0 pb-7 max-[767px]:mx-auto max-[767px]:w-full max-[767px]:max-w-[530px] max-[640px]:pb-3.5">
 <x-editorial-image name="education-collaboration" alt="Conceptual illustration of education professionals planning together around an open book." caption="A shared purpose. A thoughtful approach." priority />
-<div class="absolute bottom-0 left-[-20px] flex items-center gap-3.5 rounded-2xl border border-white/70 border-l-4 border-l-coral bg-white/90 px-[22px] py-[18px] text-[11px] leading-[1.6] text-navy shadow-[0_18px_40px_rgba(11,42,91,.14)] backdrop-blur max-[640px]:hidden"><x-icon name="book" class="text-teal" /><span>Better education begins<br>with purposeful partnership.</span></div>
+<div class="absolute -bottom-2 left-[-30px] flex items-center gap-3.5 rounded-2xl border border-white/15 border-l-4 border-l-coral bg-[#193451]/95 px-[22px] py-[18px] text-[11px] leading-[1.6] text-white shadow-[0_18px_40px_rgba(0,0,0,.22)] backdrop-blur max-[640px]:left-0"><x-icon name="book" class="text-[#7ed8c2]" /><span>Better education begins<br>with purposeful partnership.</span></div>
+<div class="absolute -right-8 top-8 grid h-24 w-24 rotate-6 place-items-center rounded-full bg-coral text-center text-[11px] font-bold uppercase leading-tight tracking-wider text-white shadow-xl max-[640px]:right-0">Ideas<br>into<br>action</div>
 
 </div>
 </div>

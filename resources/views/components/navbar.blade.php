@@ -9,7 +9,7 @@
     <div class="mx-auto flex min-h-[94px] w-[calc(100%-96px)] max-w-[1240px] items-center justify-between gap-7 max-[1190px]:min-h-[82px] max-[1190px]:w-[calc(100%-64px)] max-[767px]:min-h-[76px] max-[640px]:w-[calc(100%-40px)]">
         <x-brand />
         <nav id="main-navigation" class="flex items-center gap-5 max-[1190px]:hidden" aria-label="Main navigation">
-            <x-navigation-links />
+            <x-desktop-navigation />
             <a href="{{ route('contact') }}#consultation" class="inline-flex min-h-[42px] items-center justify-center gap-2.5 rounded border border-orange bg-orange px-3.5 py-[11px] text-[11px] font-bold text-[#14233a] hover:bg-[#df6811]">Request a Consultation <span class="text-[20px]" aria-hidden="true">↗</span></a>
         </nav>
         <div class="flex items-center gap-2 max-[767px]:gap-1.5 min-[1191px]:hidden">
@@ -27,7 +27,7 @@
     </div>
     <nav class="grid grid-cols-2 gap-[9px] max-[360px]:grid-cols-1" aria-label="All pages"><x-navigation-links /></nav>
     <a class="mt-6 inline-flex w-full items-center justify-center gap-6 rounded border border-orange bg-orange px-6 py-[15px] font-bold text-[#14233a]" href="{{ route('contact') }}#consultation">Request a Consultation <span aria-hidden="true">↗</span></a>
-    <div class="flex justify-center gap-7 py-[15px] text-[13px] text-navy"><a class="px-1" href="tel:+2347062220159">Call us</a><a class="px-1" href="{{ config('site.whatsapp') }}">WhatsApp</a></div>
+    <div class="flex justify-center gap-7 py-[15px] text-[13px] text-navy"><a class="px-1" href="tel:+2347062220159">Call us</a><a class="px-1" href="{{ config('site.whatsapp') }}">WhatsApp</a><a class="px-1 font-semibold text-teal" href="{{ route('admin.login') }}">Admin login</a></div>
     <div class="border-t border-line pt-[15px]">
         <button class="inline-flex items-center gap-3 py-3 text-[13px] font-bold text-navy" type="button" data-install-app hidden><x-icon name="download" /> Add to home screen</button>
         <p data-install-feedback class="text-[14px] text-muted" role="status" hidden></p>

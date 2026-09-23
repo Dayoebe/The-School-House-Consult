@@ -1,0 +1,80 @@
+<x-layouts.admin title="Dashboard">
+    @php
+        $sectionTitles = [
+            null => 'Good morning, Super Admin.',
+            'services' => 'Services',
+            'programs' => 'Programs & training',
+            'team' => 'Team members',
+            'resources' => 'Resources',
+            'case-studies' => 'Case studies',
+            'faqs' => 'FAQs',
+            'consultations' => 'Consultation requests',
+            'messages' => 'Contact messages',
+            'settings' => 'Site settings',
+        ];
+    @endphp
+    <div class="min-h-screen lg:flex">
+        <aside class="w-full shrink-0 bg-[#10243d] text-white lg:min-h-screen lg:w-72">
+            <div class="flex items-center justify-between px-6 py-6 lg:block lg:px-7 lg:py-8">
+                <a class="font-display text-sm font-bold uppercase tracking-[.12em]" href="{{ route('admin.dashboard') }}">The School House <span class="text-[#ff9b8b]">Consult.</span></a>
+                <span class="rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-[#9fb4bf]">Admin</span>
+            </div>
+            <nav class="hidden space-y-7 px-4 pb-8 lg:block" aria-label="Admin navigation">
+                @foreach(config('menu') as $group)
+                    <div>
+                        <p class="mb-2 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-[#78919d]">{{ $group['label'] }}</p>
+                        <div class="space-y-1">
+                            @foreach($group['items'] as $item)
+                                @php($active = request()->routeIs($item['route']) && (($item['params']['section'] ?? null) === $section || ($item['route'] === 'admin.dashboard' && $section === null)))
+                                <a class="group flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition {{ $active ? 'bg-white text-navy shadow-lg shadow-black/10' : 'text-[#c5d5da] hover:bg-white/10 hover:text-white' }}" href="{{ route($item['route'], $item['params'] ?? []) }}">
+                                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $active ? 'bg-[#e5f2ed] text-teal' : 'bg-white/10 text-[#9fcfc0]' }}"><x-icon :name="$item['icon']" class="h-4 w-4" /></span>
+                                    <span>{{ $item['label'] }}</span>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </nav>
+            <div class="hidden border-t border-white/10 px-7 py-6 lg:block">
+                <a class="mb-5 flex items-center gap-3 text-xs text-[#c5d5da] hover:text-white" href="{{ route('home') }}"><span aria-hidden="true">↗</span> View live website</a>
+                <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="text-xs font-semibold text-[#ffb19e] hover:text-white" type="submit">Sign out</button></form>
+            </div>
+        </aside>
+        <main class="min-w-0 flex-1">
+            <header class="flex items-center justify-between border-b border-[#dce7e1] bg-white/80 px-5 py-5 backdrop-blur sm:px-8 lg:px-12 lg:py-7">
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-[.17em] text-teal">The School House Consult / Control room</p>
+                    <h1 class="mt-2 font-display text-2xl font-semibold tracking-[-.04em] text-navy sm:text-3xl">{{ $sectionTitles[$section] }}</h1>
+                </div>
+                <div class="hidden items-center gap-3 sm:flex">
+                    <div class="grid h-10 w-10 place-items-center rounded-full bg-[#e5f2ed] text-sm font-bold text-teal">SA</div>
+                    <div><p class="text-sm font-semibold text-navy">Super Admin</p><p class="text-xs text-muted">{{ auth()->user()->email }}</p></div>
+                </div>
+            </header>
+            <div class="px-5 py-7 sm:px-8 lg:px-12 lg:py-10">
+                @if($section)
+                    <div class="rounded-[28px] border border-[#dce7e1] bg-white p-7 shadow-[0_12px_35px_rgba(11,42,91,.05)] sm:p-10">
+                        <span class="inline-flex rounded-full bg-[#e5f2ed] px-3 py-1 text-[10px] font-bold uppercase tracking-[.15em] text-teal">Workspace section</span>
+                        <h2 class="mt-5 font-display text-4xl font-semibold tracking-[-.05em] text-navy">{{ $sectionTitles[$section] }}</h2>
+                        <p class="mt-4 max-w-2xl text-sm leading-7 text-muted">This area is connected to the admin navigation and ready for its management workflow. The dashboard shell, authorization and menu configuration are in place.</p>
+                        <a class="mt-7 inline-flex items-center rounded-full bg-coral px-5 py-3 text-sm font-bold text-white hover:bg-[#df5e51]" href="{{ route('home') }}">Preview the public website <span class="ml-3">↗</span></a>
+                    </div>
+                @else
+                    <div class="mb-8 flex flex-col justify-between gap-5 rounded-[28px] bg-[linear-gradient(120deg,#0f766e,#10243d)] p-7 text-white shadow-[0_20px_50px_rgba(15,118,110,.18)] sm:flex-row sm:items-end sm:p-9">
+                        <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-[#9de4d0]">Your workspace at a glance</p><h2 class="mt-3 max-w-xl font-display text-4xl font-semibold leading-none tracking-[-.055em] sm:text-5xl">Make the next useful thing visible.</h2></div>
+                        <a class="shrink-0 rounded-full bg-white px-5 py-3 text-sm font-bold text-navy hover:bg-[#eef8f4]" href="{{ route('home') }}">View website ↗</a>
+                    </div>
+                    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                        @foreach($stats as $stat)
+                            <article class="rounded-[22px] border border-[#dce7e1] bg-white p-6 shadow-[0_10px_30px_rgba(11,42,91,.04)]"><div class="flex items-center justify-between"><span class="grid h-10 w-10 place-items-center rounded-xl {{ $stat['tone'] === 'coral' ? 'bg-[#fff0ed] text-coral' : 'bg-[#e5f2ed] text-teal' }}"><x-icon :name="$stat['icon']" class="h-5 w-5" /></span><span class="text-xl text-[#cbd8d2]">↗</span></div><p class="mt-7 text-3xl font-bold tracking-[-.04em] text-navy">{{ $stat['value'] }}</p><p class="mt-1 text-sm text-muted">{{ $stat['label'] }}</p></article>
+                        @endforeach
+                    </div>
+                    <div class="mt-8 grid gap-8 xl:grid-cols-[1.15fr_.85fr]">
+                        <section class="rounded-[28px] border border-[#dce7e1] bg-white p-7 shadow-[0_10px_30px_rgba(11,42,91,.04)] sm:p-8"><div class="flex items-center justify-between"><div><p class="text-[11px] font-bold uppercase tracking-[.17em] text-teal">Recent activity</p><h2 class="mt-2 font-display text-2xl font-semibold text-navy">Latest consultation requests</h2></div><a class="text-sm font-bold text-coral hover:text-navy" href="{{ route('admin.section', ['section' => 'consultations']) }}">See all ↗</a></div><div class="mt-6 divide-y divide-[#e8efeb]">@forelse($recentConsultations as $consultation)<div class="flex items-center justify-between gap-4 py-4"><div><p class="text-sm font-semibold text-navy">{{ $consultation->full_name }}</p><p class="mt-1 text-xs text-muted">{{ $consultation->organisation ?: 'Independent enquiry' }}</p></div><span class="rounded-full bg-[#fff3ee] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-coral">{{ $consultation->status }}</span></div>@empty<p class="py-8 text-sm text-muted">No consultation requests yet.</p>@endforelse</div></section>
+                        <section class="rounded-[28px] border border-[#dce7e1] bg-[#f0f7f3] p-7 sm:p-8"><p class="text-[11px] font-bold uppercase tracking-[.17em] text-teal">Content pulse</p><h2 class="mt-2 font-display text-2xl font-semibold text-navy">Your website inventory</h2><div class="mt-6 space-y-4">@foreach([['Programs','programs'],['Team members','team'],['Case studies','case-studies'],['FAQs','faqs']] as [$label,$key])<a class="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:shadow-md" href="{{ route('admin.section', ['section' => $key]) }}"><span>{{ $label }}</span><span class="text-teal">{{ $contentCounts[$key] }} <span class="ml-2 text-lg">↗</span></span></a>@endforeach</div></section>
+                    </div>
+                @endif
+            </div>
+        </main>
+    </div>
+</x-layouts.admin>
