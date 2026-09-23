@@ -1,6 +1,10 @@
 @props(['name' => 'book'])
 <svg {{ $attributes->merge(['class' => 'icon']) }} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 @switch($name)
+@case('home')<path d="m3 10 9-7 9 7v11h-6v-7H9v7H3V10Z"/>@break
+@case('grid')<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>@break
+@case('close')<path d="m6 6 12 12M6 18 18 6"/>@break
+@case('download')<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>@break
 @case('people')<circle cx="9" cy="7" r="3"/>
 <path d="M3 21v-4a6 6 0 0 1 12 0v4M16 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5v2"/>
 @break

@@ -23,6 +23,7 @@
 <link rel="icon" href="{{ asset('images/brand/icon-32.png') }}" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="{{ asset('images/brand/icon-180.png') }}" sizes="180x180">
 <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="School House">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
