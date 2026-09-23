@@ -31,7 +31,7 @@
 <meta name="school-house-service-worker" content="{{ asset('sw.js') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org', '@type'=>'Organization', 'name'=>config('site.name'), 'logo'=>asset(config('site.logo')), 'url'=>url('/'), 'description'=>config('site.mission'), 'email'=>config('site.email'), 'telephone'=>array_values(config('site.phones')), 'address'=>['@type'=>'PostalAddress','streetAddress'=>'First Floor Ekundayo House, Oda Road','addressLocality'=>'Akure','addressRegion'=>'Ondo State','addressCountry'=>'NG']], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @isset($publishedArticle)<script type="application/ld+json">{!! json_encode(array_filter(['@context'=>'https://schema.org','@type'=>'Article','headline'=>$publishedArticle->title,'description'=>$publishedArticle->excerpt,'datePublished'=>$publishedArticle->published_at->toIso8601String(),'dateModified'=>$publishedArticle->updated_at->toIso8601String(),'author'=>$publishedArticle->author ? ['@type'=>'Person','name'=>$publishedArticle->author] : null,'mainEntityOfPage'=>$canonical,'image'=>$image]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @endisset
