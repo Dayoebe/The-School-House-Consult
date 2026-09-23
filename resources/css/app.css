@@ -1,7 +1,7 @@
-@import 'tailwindcss';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@theme { --font-sans: 'Arial', 'Helvetica Neue', sans-serif; --color-navy: #0b2a5b; --color-orange: #f47b20; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root { --navy:#0b2a5b; --orange:#f47b20; --ink:#172033; --muted:#5b6575; --soft:#f5f7fa; --line:#dfe4ec; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:110px; }
