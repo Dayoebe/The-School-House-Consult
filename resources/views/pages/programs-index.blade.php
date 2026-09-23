@@ -13,7 +13,7 @@
 @else<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-cols-1">
 @foreach($programs as $program)<x-program-card :program="$program" />
 @endforeach</div>
-<div class="pagination">{{ $programs->links() }}</div>
+<div class="mt-10">{{ $programs->links() }}</div>
 @endif</div>
 </section>
 <x-cta />

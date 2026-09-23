@@ -14,7 +14,7 @@
 @else<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-cols-1">
 @foreach($articles as $article)<x-article-card :article="$article" />
 @endforeach</div>
-<div class="pagination">{{ $articles->links() }}</div>
+<div class="mt-10">{{ $articles->links() }}</div>
 @endif</div>
 </div>
 </section>

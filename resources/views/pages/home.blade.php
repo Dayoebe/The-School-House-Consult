@@ -26,7 +26,6 @@
 </div>
 </section>
 <div class="border-y border-line"><div class="mx-auto flex min-h-[82px] w-[calc(100%-96px)] max-w-[1240px] items-center justify-between gap-5 text-[13px] text-[#b3bcc9] max-[1190px]:w-[calc(100%-64px)] max-[767px]:flex-wrap max-[767px]:justify-center max-[640px]:w-[calc(100%-40px)] max-[640px]:justify-start max-[640px]:gap-2"><span class="text-[10px] uppercase tracking-[.1em] text-muted max-[767px]:w-full max-[767px]:text-center max-[640px]:text-left">Working together with</span>
-<span>Working together with</span>
 <strong>Schools & Institutions</strong>
 <span aria-hidden="true">/</span>
 <strong>Educators & Leaders</strong>
