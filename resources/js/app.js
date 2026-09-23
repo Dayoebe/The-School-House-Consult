@@ -32,7 +32,9 @@ const initialiseShell = () => {
     });
 
     const reflectFormFocus = () => {
-        document.body.classList.toggle('is-editing', Boolean(document.activeElement?.matches('input:not([type="checkbox"]):not([type="radio"]), textarea, select')));
+        const isEditing = Boolean(document.activeElement?.matches('input:not([type="checkbox"]):not([type="radio"]), textarea, select'));
+        document.body.classList.toggle('is-editing', isEditing);
+        document.querySelector('.mobile-tabs')?.classList.toggle('hidden', isEditing);
     };
     document.addEventListener('focusin', reflectFormFocus);
     document.addEventListener('focusout', () => window.setTimeout(reflectFormFocus, 0));
