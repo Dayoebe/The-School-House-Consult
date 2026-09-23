@@ -11,8 +11,8 @@
 <x-icon :name="$record->icon" />
 </span>
 <h2 class="mb-5 text-[29px] font-semibold text-navy">Let's discuss your priorities.</h2><p class="mb-[25px] text-[14px] text-muted">Tell us about your organisation and the support you are looking for.</p>
-<a class="inline-flex min-h-[50px] w-full items-center justify-center gap-3 rounded border border-orange bg-orange px-[23px] py-[15px] text-[13px] font-bold text-[#14233a]" href="{{ route('contact', ['service' => $record->id]) }}#consultation">Request a Consultation ↗</a>
-<a class="mt-4 inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ config('site.whatsapp') }}">Talk on WhatsApp ↗</a>
+<a class="inline-flex min-h-[50px] w-full items-center justify-center gap-3 rounded border border-orange bg-orange px-[23px] py-[15px] text-[13px] font-bold text-[#14233a]" href="{{ route('contact', ['service' => $record->id]) }}#consultation"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation <i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i></a>
+<a class="mt-4 inline-flex items-center gap-3 py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ config('site.whatsapp') }}"><i class="fa-brands fa-whatsapp text-base text-[#25d366]" aria-hidden="true"></i> Talk on WhatsApp <i class="fa-solid fa-arrow-up-right-from-square text-[10px]" aria-hidden="true"></i></a>
 </aside>
 </div>
 </section>

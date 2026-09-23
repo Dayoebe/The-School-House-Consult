@@ -30,13 +30,13 @@
 @foreach(config('site.phones') as $display=>$phone)<a class="mb-2 block py-1 text-[12px] hover:text-[#ffad70]" href="tel:{{ $phone }}">{{ $display }}</a>
 @endforeach<a class="mb-2 block py-1 text-[12px] break-words hover:text-[#ffad70]" href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a>
 <address class="my-[18px] mb-3 text-[12px] not-italic text-[#aebdd3]">{{ config('site.address') }}</address>
-<a class="mb-2 block py-1 text-[12px] hover:text-[#ffad70]" href="{{ config('site.whatsapp') }}">WhatsApp Us ↗</a>
+<a class="mb-2 flex items-center gap-2 py-1 text-[12px] hover:text-[#ffad70]" href="{{ config('site.whatsapp') }}"><i class="fa-brands fa-whatsapp text-[#25d366]" aria-hidden="true"></i> WhatsApp Us</a>
 </div>
 </div>
 
 <div class="mt-5 flex justify-between gap-6 border-t border-[#294061] py-[23px] max-[640px]:flex-col">
 <p class="text-[12px] text-[#aebdd3]">© {{ date('Y') }} <a class="hover:text-[#ffad70]" href="https://dayoebe.github.io" target="_blank" rel="noopener noreferrer">Wireless Terminal</a>.</p>
-<a class="text-[12px] hover:text-[#ffad70]" href="{{ route('contact') }}#consultation">Request a Consultation ↗</a>
+<a class="flex items-center gap-2 text-[12px] hover:text-[#ffad70]" href="{{ route('contact') }}#consultation"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation</a>
 </div>
 </div>
 </footer>

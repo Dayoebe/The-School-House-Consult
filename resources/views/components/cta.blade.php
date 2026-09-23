@@ -4,7 +4,7 @@
 <h2 class="font-display text-[clamp(30px,3.1vw,48px)] font-semibold leading-[1.02] tracking-[-.045em] text-white">Let's Build Better Educational Outcomes Together</h2>
 <p class="mt-[19px] max-w-[580px] text-[15px] text-[#cfdaeb]">Have an educational challenge, project or development need? Talk to The School House Consult.</p>
 </div>
-<a class="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-6 rounded border border-orange bg-orange px-[23px] py-[15px] text-[13px] font-bold text-[#14233a] hover:bg-[#df6811]" href="{{ route('contact') }}#consultation">Request a Consultation <span aria-hidden="true">↗</span>
+<a class="inline-flex min-h-[50px] shrink-0 items-center justify-center gap-3 rounded border border-orange bg-orange px-[23px] py-[15px] text-[13px] font-bold text-[#14233a] hover:bg-[#df6811]" href="{{ route('contact') }}#consultation"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation <i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i>
 </a>
 </div>
 </section>

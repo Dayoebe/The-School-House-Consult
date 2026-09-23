@@ -12,7 +12,7 @@
 <div class="mt-[30px] flex flex-wrap gap-3 max-[640px]:grid max-[640px]:grid-cols-1 max-[640px]:gap-2.5">
 <a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-coral bg-coral px-6 py-4 text-[13px] font-bold text-white shadow-[0_12px_25px_rgba(239,111,97,.22)] transition hover:-translate-y-0.5 hover:bg-[#df5e51] max-[640px]:min-h-[51px]" href="{{ route('services.index') }}">Explore Our Services <span class="text-[20px]" aria-hidden="true">↗</span>
 </a>
-<a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-[13px] font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-navy max-[640px]:min-h-[47px]" href="{{ route('contact') }}#consultation">Request a Consultation</a>
+<a class="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-[13px] font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-navy max-[640px]:min-h-[47px]" href="{{ route('contact') }}#consultation"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation</a>
 </div>
 <div class="mt-10 flex items-center gap-3.5 text-[11px] leading-[1.6] text-[#9fb4bf] max-[640px]:hidden">
 <span class="grid h-[37px] w-[37px] place-items-center rounded-full border border-white/20 text-[20px] text-[#7ed8c2]" aria-hidden="true">↗</span><span>Rooted in collaboration.<br>

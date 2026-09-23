@@ -31,7 +31,7 @@
 </div>
 <p class="my-6 text-[11px] text-[#626d7d]">Your details are used to handle your enquiry and are not displayed publicly. Please avoid including sensitive learner information.</p>
 <button class="inline-flex min-h-[50px] items-center justify-center gap-6 rounded border border-orange bg-orange px-[23px] py-[15px] text-[13px] font-bold text-[#14233a] disabled:opacity-65" type="submit" wire:loading.attr="disabled" wire:target="submit">
-<span wire:loading.remove wire:target="submit">Send Consultation Request ↗</span>
+<span wire:loading.remove wire:target="submit"><i class="fa-solid fa-paper-plane mr-2" aria-hidden="true"></i> Send Consultation Request</span>
 <span wire:loading wire:target="submit" role="status">Sending your request…</span>
 </button>
 </form>@endif</div>
