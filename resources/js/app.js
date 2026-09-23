@@ -1,4 +1,5 @@
 import 'animate.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Livewire provides Alpine. The application shell uses native browser controls.
 const initialiseShell = () => {

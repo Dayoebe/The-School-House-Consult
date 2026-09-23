@@ -10,7 +10,7 @@
                 @csrf
                 <div><label class="mb-2 block text-sm font-semibold text-navy" for="email">Email address</label><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="email" name="email" type="email" value="{{ old('email') }}" required autofocus autocomplete="email"></div>
                 <div><label class="mb-2 block text-sm font-semibold text-navy" for="password">Password</label><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="password" name="password" type="password" required autocomplete="current-password"></div>
-                <button class="flex min-h-12 w-full items-center justify-center rounded-xl bg-coral px-5 text-sm font-bold text-white shadow-lg shadow-coral/20 transition hover:-translate-y-0.5 hover:bg-[#df5e51]" type="submit">Log in <span class="ml-3 text-lg" aria-hidden="true">↗</span></button>
+                <button class="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-coral px-5 text-sm font-bold text-white shadow-lg shadow-coral/20 transition hover:-translate-y-0.5 hover:bg-[#df5e51]" type="submit">Log in <i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i></button>
             </form>
             <p class="mt-7 text-center text-sm text-muted">New here? <a class="font-bold text-teal hover:text-coral" href="{{ route('register') }}">Create an account</a></p>
         </section>
