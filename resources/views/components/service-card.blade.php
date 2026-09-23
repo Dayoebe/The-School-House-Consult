@@ -1,8 +1,8 @@
-@props(['service'])<article class="group flex min-h-full flex-col items-start rounded border border-line bg-white p-[30px] transition hover:border-[#9aaec9] hover:shadow-[0_5px_16px_#0b2a5b06] max-[640px]:rounded-[10px] max-[640px]:p-6">
-<span class="mb-6 inline-grid h-[46px] w-[46px] shrink-0 place-items-center rounded bg-[#f5eee7] text-[#ad4f08]">
+@props(['service'])<article class="group flex min-h-full flex-col items-start rounded-[24px] border border-[#e7ded1] bg-white/85 p-[30px] shadow-[0_12px_35px_rgba(11,42,91,.05)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-teal/30 hover:shadow-[0_20px_45px_rgba(11,42,91,.12)] max-[640px]:rounded-[20px] max-[640px]:p-6">
+<span class="mb-6 inline-grid h-[50px] w-[50px] shrink-0 place-items-center rounded-2xl bg-[#e8f2ee] text-teal transition group-hover:rotate-[-6deg] group-hover:bg-teal group-hover:text-white">
 <x-icon :name="$service->icon" />
 </span>
-<h3 class="mb-[13px] text-[20px] font-semibold leading-[1.3] tracking-[-.02em] text-navy">
+<h3 class="mb-[13px] font-display text-[21px] font-semibold leading-[1.15] tracking-[-.02em] text-navy">
 <a href="{{ route('services.show', $service) }}">{{ $service->title }}</a>
 </h3>
 <p class="mb-5 text-[14px] text-muted">{{ $service->description }}</p>

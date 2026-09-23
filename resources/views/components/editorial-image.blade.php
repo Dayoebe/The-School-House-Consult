@@ -1,5 +1,5 @@
 @props(['name' => 'education-collaboration', 'alt', 'caption' => null, 'priority' => false])
-<figure {{ $attributes->merge(['class' => 'm-0 overflow-hidden rounded-[10px] bg-[#e9edf3]']) }}>
+<figure {{ $attributes->merge(['class' => 'm-0 overflow-hidden rounded-[28px] border border-white/80 bg-[#e9edf3] shadow-[0_24px_60px_rgba(11,42,91,.14)]']) }}>
     <img
         src="{{ asset('images/illustrations/'.$name.'-1536.webp') }}"
         srcset="{{ asset('images/illustrations/'.$name.'-768.webp') }} 768w, {{ asset('images/illustrations/'.$name.'-1536.webp') }} 1536w"
