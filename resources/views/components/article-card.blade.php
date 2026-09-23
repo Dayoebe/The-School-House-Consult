@@ -10,7 +10,7 @@
 </h3>
 <p class="text-[14px] text-muted">{{ $article->excerpt }}</p>
 <time class="my-5 mb-3 block text-[12px] text-muted" datetime="{{ $article->published_at->toDateString() }}">{{ $article->published_at->format('j F Y') }}</time>
-<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('resources.show', $article) }}">Read Article <span class="text-[22px]" aria-hidden="true">↗</span>
+<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('resources.show', $article) }}">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
 </a>
 </div>
 </article>

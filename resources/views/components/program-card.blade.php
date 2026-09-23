@@ -6,7 +6,7 @@
 <p class="text-[14px] text-muted">{{ Str::limit($program->description, 180) }}</p>
 @if($program->target_audience)<p class="mt-[18px] text-[14px] text-muted">{{ $program->target_audience }}</p>
 @endif @if($program->duration)<p class="mt-[18px] text-[14px] text-muted">Duration: {{ $program->duration }}</p>
-@endif<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('programs.show', $program) }}">Explore program <span class="text-[22px]" aria-hidden="true">↗</span>
+@endif<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('programs.show', $program) }}">Explore program <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
 </a>
 </div>
 </article>

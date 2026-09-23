@@ -13,7 +13,7 @@
 @endif @if($member->phone)<a class="text-navy underline" href="tel:{{ preg_replace('/[^+0-9]/', '', $member->phone) }}">{{ $member->phone }}</a>
 @endif @foreach($member->social_links ?? [] as $label => $url) @if(filter_var($url, FILTER_VALIDATE_URL) && in_array(parse_url($url, PHP_URL_SCHEME), ['http', 'https']))<a class="text-navy underline" href="{{ $url }}" rel="noopener noreferrer">{{ $label }}</a>
 @endif @endforeach</div>
-@endif<a class="mt-6 inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('contact') }}#consultation">Start a conversation <span class="text-[22px]" aria-hidden="true">↗</span>
+@endif<a class="mt-6 inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('contact') }}#consultation">Start a conversation <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
 </a>
 </div>
 </article>

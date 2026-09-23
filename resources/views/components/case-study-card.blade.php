@@ -4,7 +4,7 @@
 <p class="mb-3 text-[11px] font-bold uppercase tracking-[.17em] text-teal">Case study</p>
 <h3 class="mb-[15px] font-display text-[22px] font-semibold leading-[1.1] tracking-[-.02em] text-navy">{{ $caseStudy->title }}</h3>
 <p class="text-[14px] text-muted">{{ $caseStudy->summary }}</p>
-<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('case-studies.show', $caseStudy) }}">Read case study <span class="text-[22px]" aria-hidden="true">↗</span>
+<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('case-studies.show', $caseStudy) }}">Read case study <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
 </a>
 </div>
 </article>

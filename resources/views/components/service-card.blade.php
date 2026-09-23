@@ -6,6 +6,6 @@
 <a href="{{ route('services.show', $service) }}">{{ $service->title }}</a>
 </h3>
 <p class="mb-5 text-[14px] text-muted">{{ $service->description }}</p>
-<a class="mt-auto flex w-full items-center justify-between gap-[22px] py-2 text-[13px] font-bold leading-[1.5] text-navy transition hover:text-orange" href="{{ route('services.show', $service) }}" aria-label="Learn more about {{ $service->title }}">Learn More <span class="text-[22px]" aria-hidden="true">↗</span>
+<a class="mt-auto flex w-full items-center justify-between gap-[22px] py-2 text-[13px] font-bold leading-[1.5] text-navy transition hover:text-orange" href="{{ route('services.show', $service) }}" aria-label="Learn more about {{ $service->title }}">Learn More <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
 </a>
 </article>
