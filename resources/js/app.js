@@ -1,3 +1,5 @@
+import 'animate.css';
+
 // Livewire provides Alpine. The application shell uses native browser controls.
 const initialiseShell = () => {
     const menu = document.querySelector('#mobile-menu');

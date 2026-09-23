@@ -13,9 +13,13 @@ export default {
         muted: '#5b6575',
         soft: '#f5f7fa',
         line: '#dfe4ec',
+        cream: '#fffaf2',
+        teal: '#0f766e',
+        coral: '#ef6f61',
       },
       fontFamily: {
         sans: ['Arial', 'Helvetica Neue', 'sans-serif'],
+        display: ['Space Grotesk', 'Arial', 'sans-serif'],
       },
     },
   },
