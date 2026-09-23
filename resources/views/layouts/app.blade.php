@@ -35,12 +35,12 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @livewireStyles
 </head>
-<body>
-<a href="#main-content" class="skip-link">Skip to content</a>
+<body class="bg-white font-sans text-[16px] leading-[1.65] text-ink antialiased">
+<a href="#main-content" class="fixed left-4 top-[-100px] z-[100] bg-navy px-5 py-3 text-white focus:top-3">Skip to content</a>
 <x-navbar />
 <main id="main-content">{{ $slot }}</main>
 <x-footer />
 <x-mobile-navigation />
-<div class="connection-notice" data-connection-notice role="status" hidden>You’re offline. Reconnect before sending an enquiry.</div>
+<div class="fixed bottom-5 left-1/2 z-[45] max-w-[calc(100%-32px)] -translate-x-1/2 rounded-[10px] border border-[#dc9d67] bg-[#fff2e5] px-[18px] py-[13px] text-[13px] text-[#713708] shadow-[0_4px_16px_#0b2a5b12] max-[767px]:bottom-[88px]" data-connection-notice role="status" hidden>You’re offline. Reconnect before sending an enquiry.</div>
 @livewireScripts</body>
 </html>

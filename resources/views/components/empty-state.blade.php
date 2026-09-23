@@ -1,9 +1,9 @@
-@props(['title', 'text'])<div class="empty-state">
-<span class="icon-box">
+@props(['title', 'text'])<div class="flex items-center gap-7 rounded border border-line bg-white p-[38px] max-[640px]:rounded-xl max-[640px]:p-[25px]">
+<span class="grid h-[62px] w-[62px] shrink-0 place-items-center rounded bg-[#edf1f7] text-navy">
 <x-icon name="book" />
 </span>
 <div>
-<h3>{{ $title }}</h3>
-<p>{{ $text }}</p>
+<h3 class="mb-2.5 text-[21px] font-semibold text-navy">{{ $title }}</h3>
+<p class="max-w-[800px] text-[14px] text-muted">{{ $text }}</p>
 </div>
 </div>
