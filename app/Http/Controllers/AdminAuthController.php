@@ -12,7 +12,7 @@ class AdminAuthController extends Controller
     public function create(): View|RedirectResponse
     {
         if (Auth::check()) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route(Auth::user()->isAdmin() ? 'admin.dashboard' : 'home');
         }
 
         return view('admin.login');
@@ -29,7 +29,7 @@ class AdminAuthController extends Controller
             return back()->withErrors(['email' => 'Those credentials do not match our records.'])->onlyInput('email');
         }
 
-        if (Auth::user()->email !== config('admin.email')) {
+        if (! Auth::user()->isAdmin()) {
             Auth::logout();
             abort(403);
         }

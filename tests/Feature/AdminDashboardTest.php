@@ -38,4 +38,32 @@ class AdminDashboardTest extends TestCase
 
         $this->actingAs($user)->get(route('admin.dashboard'))->assertForbidden();
     }
+
+    public function test_people_can_register_as_members(): void
+    {
+        $this->post(route('register.store'), [
+            'name' => 'A New Member',
+            'email' => 'member@example.com',
+            'password' => 'password-123',
+            'password_confirmation' => 'password-123',
+        ])->assertRedirect(route('home'));
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'member@example.com',
+            'name' => 'A New Member',
+            'role' => 'member',
+        ]);
+    }
+
+    public function test_admin_can_promote_a_member(): void
+    {
+        $this->seed(AdminUserSeeder::class);
+        $member = User::factory()->create(['role' => 'member']);
+
+        $this->actingAs(User::where('email', 'super@admin.com')->first())
+            ->patch(route('admin.users.role', $member), ['role' => 'admin'])
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('users', ['id' => $member->id, 'role' => 'admin']);
+    }
 }

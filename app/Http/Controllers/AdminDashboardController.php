@@ -10,6 +10,7 @@ use App\Models\Faq;
 use App\Models\Program;
 use App\Models\Service;
 use App\Models\TeamMember;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -20,7 +21,7 @@ class AdminDashboardController extends Controller
         $section = $request->route('section');
 
         abort_unless($section === null || in_array($section, [
-            'services', 'programs', 'team', 'resources', 'case-studies', 'faqs', 'consultations', 'messages', 'settings',
+            'services', 'programs', 'team', 'resources', 'case-studies', 'faqs', 'consultations', 'messages', 'settings', 'users',
         ], true), 404);
 
         return view('admin.dashboard', [
@@ -38,6 +39,7 @@ class AdminDashboardController extends Controller
                 'faqs' => Faq::count(),
             ],
             'recentConsultations' => ConsultationRequest::query()->latest()->limit(5)->get(),
+            'users' => User::query()->latest()->get(),
         ]);
     }
 }

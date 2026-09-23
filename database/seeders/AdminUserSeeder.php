@@ -13,6 +13,7 @@ class AdminUserSeeder extends Seeder
             ['email' => config('admin.email')],
             [
                 'name' => 'Super Admin',
+                'role' => 'admin',
                 'password' => env('ADMIN_PASSWORD', '9638'),
                 'email_verified_at' => now(),
             ],
