@@ -29,4 +29,11 @@
     </div>
 @endforeach
 <a class="py-3 text-[11px] font-semibold text-slate-600 transition hover:text-orange" href="{{ route('contact') }}">Contact</a>
-<a class="ml-1 border-l border-[#dce7e1] pl-5 py-3 text-[11px] font-semibold text-teal transition hover:text-coral" href="{{ route('admin.login') }}">Admin login</a>
+@auth
+    <span class="ml-1 border-l border-[#dce7e1] pl-5 text-[11px] font-semibold text-navy">Hi, {{ Str::before(auth()->user()->name, ' ') }}</span>
+    @if(auth()->user()->isAdmin())<a class="py-3 text-[11px] font-semibold text-teal transition hover:text-coral" href="{{ route('admin.dashboard') }}">Dashboard</a>@endif
+    <form method="POST" action="{{ route('logout') }}"><button class="py-3 text-[11px] font-semibold text-slate-600 transition hover:text-coral" type="submit">Log out</button>@csrf</form>
+@else
+    <a class="ml-1 border-l border-[#dce7e1] pl-5 py-3 text-[11px] font-semibold text-teal transition hover:text-coral" href="{{ route('login') }}">Log in</a>
+    <a class="rounded-full bg-navy px-4 py-2 text-[11px] font-bold text-white transition hover:bg-teal" href="{{ route('register') }}">Sign up</a>
+@endauth

@@ -33,9 +33,9 @@
 <a class="mb-2 block py-1 text-[12px] hover:text-[#ffad70]" href="{{ config('site.whatsapp') }}">WhatsApp Us ↗</a>
 </div>
 </div>
-<p class="mt-10 max-w-[800px] border-t border-[#294061] pt-5 text-[10px] leading-[1.7] text-[#aebdd3]">Our editorial illustrations are AI-generated concepts, not photographs of staff, clients or events. The Principal Consultant photograph is supplied.</p>
+
 <div class="mt-5 flex justify-between gap-6 border-t border-[#294061] py-[23px] max-[640px]:flex-col">
-<p class="text-[12px] text-[#aebdd3]">© {{ date('Y') }} The School House Consult. All rights reserved.</p>
+<p class="text-[12px] text-[#aebdd3]">© {{ date('Y') }} <a class="hover:text-[#ffad70]" href="https://dayoebe.github.io" target="_blank" rel="noopener noreferrer">Wireless Terminal</a>.</p>
 <a class="text-[12px] hover:text-[#ffad70]" href="{{ route('contact') }}#consultation">Request a Consultation ↗</a>
 </div>
 </div>
