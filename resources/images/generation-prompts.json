@@ -1,0 +1,17 @@
+{
+  "method": "Built-in image generation",
+  "assets": [
+    {
+      "file": "public/images/brand/school-house-mark.png",
+      "prompt": "Use case: logo-brand. Create one polished, original standalone brand symbol for THE SCHOOL HOUSE CONSULT, a professional education consulting firm. A crisp, minimal geometric mark combines the outline of an open book with an architectural house roof: two navy book pages form an abstract S/H relationship and a small orange rising accent suggests educational progress. Confident flat vector-like design, very few solid shapes, precise balanced geometry, strong negative space, legible at app-icon size. Palette exclusively deep navy #0B2A5B and orange #F47B20. Centered mark occupying 76 percent of a square canvas. Genuine transparent background. No text, letters, tagline, mockup, shadow, gradient, border, 3D, watermark or presentation board. Deliver a single high-resolution transparent PNG symbol suitable for a real corporate header and mobile app icon."
+    },
+    {
+      "file": "public/images/illustrations/education-collaboration.png",
+      "prompt": "Use case: illustration-story. Asset type: premium editorial website illustration for The School House Consult education consultancy. Create a wide landscape 3:2 illustration of three adult Black Nigerian education professionals collaborating around a table, looking at an open book and a simple curriculum planning sheet. One woman with natural hair, another woman, and a man, smart contemporary business casual clothing. Authentic respectful human proportions, confident understated expressions, no resemblance to a real person. Style: sophisticated flat editorial illustration with gently textured matte color fields, architectural geometric composition, not cartoon mascots or photorealistic stock photography. Navy #0B2A5B dominates, warm orange #F47B20 accents, cream and pale blue backgrounds, natural dark skin tones. Sparse clean office setting with a large window, books and one modest plant. Calm thoughtful collaborative mood. Keep all faces and table focal area within central 75 percent for mobile cropping. No text, logos, symbols resembling awards, charts with numbers, graduation caps, children, gradients, watermark. This is explicitly a conceptual illustration, not a representation of the firm's actual staff or clients."
+    },
+    {
+      "file": "public/images/illustrations/professional-learning.png",
+      "prompt": "Use case: illustration-story. Asset type: professional training editorial illustration for The School House Consult. Create a wide 3:2 landscape image: one adult Black Nigerian female educator standing beside a simple board with abstract geometric learning diagrams, two adult education professionals seated taking notes in the foreground. A laptop, open notebook, restrained architectural classroom details. Sophisticated contemporary flat editorial illustration with subtly textured matte colors, realistic human proportions, clear deliberate geometry, elegant and calm, matching a premium corporate consultancy brand. Navy #0B2A5B, orange #F47B20, cream, pale blue, natural dark skin tones. Balanced composition that remains legible on mobile, faces and essential objects centrally composed, ample clean breathing room. No readable text, no logos, no numbers or fabricated performance charts, no certificates, no children, no graduation caps, no gradients, no watermark. This is a conceptual illustration of professional learning, not a real workshop or event."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+    "id": "./",
+    "name": "The School House Consult",
+    "short_name": "School House",
+    "description": "Education consulting, professional learning and resources from The School House Consult.",
+    "lang": "en",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#F5F7FA",
+    "theme_color": "#0B2A5B",
+    "prefer_related_applications": false,
+    "icons": [
+        { "src": "images/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "images/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+    ],
+    "shortcuts": [
+        { "name": "Explore Services", "url": "services" },
+        { "name": "Request a Consultation", "url": "contact#consultation" },
+        { "name": "Education Resources", "url": "resources" }
+    ]
+}
