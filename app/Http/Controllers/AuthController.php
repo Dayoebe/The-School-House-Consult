@@ -10,10 +10,14 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showLogin(): View|RedirectResponse
+    public function showLogin(Request $request): View|RedirectResponse
     {
         if (Auth::check()) {
             return redirect()->route(Auth::user()->isAdmin() ? 'admin.dashboard' : 'home');
+        }
+
+        if ($request->filled('redirect') && str_starts_with($request->string('redirect')->toString(), url('/'))) {
+            $request->session()->put('url.intended', $request->string('redirect')->toString());
         }
 
         return view('auth.login');

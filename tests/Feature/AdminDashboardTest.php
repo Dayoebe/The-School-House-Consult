@@ -11,16 +11,16 @@ class AdminDashboardTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_guests_are_redirected_to_admin_login(): void
+    public function test_guests_are_redirected_to_shared_login(): void
     {
-        $this->get('/admin')->assertRedirect(route('admin.login'));
+        $this->get('/admin')->assertRedirect(route('login'));
     }
 
     public function test_super_admin_can_log_in_and_view_configured_dashboard_menu(): void
     {
         $this->seed(AdminUserSeeder::class);
 
-        $this->post(route('admin.login.store'), [
+        $this->post(route('login.store'), [
             'email' => 'super@admin.com',
             'password' => '9638',
         ])->assertRedirect(route('admin.dashboard'));
@@ -53,6 +53,18 @@ class AdminDashboardTest extends TestCase
             'name' => 'A New Member',
             'role' => 'member',
         ]);
+    }
+
+    public function test_member_login_returns_to_the_page_requested_before_login(): void
+    {
+        $member = User::factory()->create(['role' => 'member']);
+
+        $this->get(route('login', ['redirect' => route('about')]))->assertOk();
+
+        $this->post(route('login.store'), [
+            'email' => $member->email,
+            'password' => 'password',
+        ])->assertRedirect(route('about'));
     }
 
     public function test_admin_can_promote_a_member(): void

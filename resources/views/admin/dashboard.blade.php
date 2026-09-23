@@ -38,7 +38,7 @@
             </nav>
             <div class="hidden border-t border-white/10 px-7 py-6 lg:block">
                 <a class="mb-5 flex items-center gap-3 text-xs text-[#c5d5da] hover:text-white" href="{{ route('home') }}"><span aria-hidden="true">↗</span> View live website</a>
-                <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="text-xs font-semibold text-[#ffb19e] hover:text-white" type="submit">Sign out</button></form>
+                <form method="POST" action="{{ route('logout') }}">@csrf<button class="text-xs font-semibold text-[#ffb19e] hover:text-white" type="submit">Sign out</button></form>
             </div>
         </aside>
         <main class="min-w-0 flex-1">
