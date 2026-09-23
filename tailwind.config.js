@@ -18,8 +18,8 @@ export default {
         coral: '#ef6f61',
       },
       fontFamily: {
-        sans: ['Arial', 'Helvetica Neue', 'sans-serif'],
-        display: ['Space Grotesk', 'Arial', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'sans-serif'],
       },
     },
   },
