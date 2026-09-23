@@ -1,4 +1,4 @@
-<x-layouts.admin title="Admin login">
+<x-layouts.admin title="Login">
     <main class="grid min-h-screen place-items-center bg-[#10243d] px-5 py-12">
         <div class="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:52px_52px]"></div>
         <section class="relative w-full max-w-md rounded-[28px] border border-white/10 bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,.25)] sm:p-10">

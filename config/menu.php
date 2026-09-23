@@ -31,4 +31,10 @@ return [
             ['label' => 'Site settings', 'route' => 'admin.section', 'params' => ['section' => 'settings'], 'icon' => 'technology'],
         ],
     ],
+    [
+        'label' => 'People',
+        'items' => [
+            ['label' => 'Registered people', 'route' => 'admin.section', 'params' => ['section' => 'users'], 'icon' => 'people'],
+        ],
+    ],
 ];

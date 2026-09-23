@@ -11,6 +11,7 @@
             'consultations' => 'Consultation requests',
             'messages' => 'Contact messages',
             'settings' => 'Site settings',
+            'users' => 'Registered people',
         ];
     @endphp
     <div class="min-h-screen lg:flex">
@@ -52,13 +53,23 @@
                 </div>
             </header>
             <div class="px-5 py-7 sm:px-8 lg:px-12 lg:py-10">
+                @if(session('status'))<div class="mb-6 rounded-2xl border border-[#b9ded0] bg-[#eaf7f0] px-5 py-4 text-sm font-semibold text-teal" role="status">{{ session('status') }}</div>@endif
                 @if($section)
+                    @if($section === 'users')
+                        <section class="rounded-[28px] border border-[#dce7e1] bg-white p-7 shadow-[0_12px_35px_rgba(11,42,91,.05)] sm:p-10">
+                            <span class="inline-flex rounded-full bg-[#e5f2ed] px-3 py-1 text-[10px] font-bold uppercase tracking-[.15em] text-teal">Community directory</span>
+                            <h2 class="mt-5 font-display text-4xl font-semibold tracking-[-.05em] text-navy">Registered people</h2>
+                            <p class="mt-3 text-sm text-muted">{{ $users->count() }} people have an account on the website.</p>
+                            <div class="mt-8 overflow-x-auto"><table class="w-full min-w-[620px] text-left text-sm"><thead class="border-b border-[#e5ede8] text-[10px] uppercase tracking-[.15em] text-muted"><tr><th class="pb-3 font-bold">Person</th><th class="pb-3 font-bold">Email</th><th class="pb-3 font-bold">Joined</th><th class="pb-3 text-right font-bold">Role</th></tr></thead><tbody class="divide-y divide-[#edf2ef]">@foreach($users as $user)<tr><td class="py-4 font-semibold text-navy">{{ $user->name }} @if($user->is(auth()->user()))<span class="ml-2 rounded-full bg-[#e5f2ed] px-2 py-1 text-[10px] font-bold text-teal">You</span>@endif</td><td class="py-4 text-muted">{{ $user->email }}</td><td class="py-4 text-muted">{{ $user->created_at->format('j M Y') }}</td><td class="py-4 text-right"><form method="POST" action="{{ route('admin.users.role', $user) }}" class="inline-flex items-center gap-2">@csrf @method('PATCH')<select class="rounded-lg border border-[#cbd8d2] bg-white px-3 py-2 text-xs font-semibold text-navy" name="role" onchange="this.form.submit()" @disabled($user->is(auth()->user()))><option value="member" @selected($user->role === 'member')>Member</option><option value="admin" @selected($user->role === 'admin')>Admin</option></select></form></td></tr>@endforeach</tbody></table></div>
+                        </section>
+                    @else
                     <div class="rounded-[28px] border border-[#dce7e1] bg-white p-7 shadow-[0_12px_35px_rgba(11,42,91,.05)] sm:p-10">
                         <span class="inline-flex rounded-full bg-[#e5f2ed] px-3 py-1 text-[10px] font-bold uppercase tracking-[.15em] text-teal">Workspace section</span>
                         <h2 class="mt-5 font-display text-4xl font-semibold tracking-[-.05em] text-navy">{{ $sectionTitles[$section] }}</h2>
                         <p class="mt-4 max-w-2xl text-sm leading-7 text-muted">This area is connected to the admin navigation and ready for its management workflow. The dashboard shell, authorization and menu configuration are in place.</p>
                         <a class="mt-7 inline-flex items-center rounded-full bg-coral px-5 py-3 text-sm font-bold text-white hover:bg-[#df5e51]" href="{{ route('home') }}">Preview the public website <span class="ml-3">↗</span></a>
                     </div>
+                    @endif
                 @else
                     <div class="mb-8 flex flex-col justify-between gap-5 rounded-[28px] bg-[linear-gradient(120deg,#0f766e,#10243d)] p-7 text-white shadow-[0_20px_50px_rgba(15,118,110,.18)] sm:flex-row sm:items-end sm:p-9">
                         <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-[#9de4d0]">Your workspace at a glance</p><h2 class="mt-3 max-w-xl font-display text-4xl font-semibold leading-none tracking-[-.055em] sm:text-5xl">Make the next useful thing visible.</h2></div>
