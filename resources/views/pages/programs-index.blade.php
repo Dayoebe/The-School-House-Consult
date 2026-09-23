@@ -2,7 +2,10 @@
 <section class="section">
 <div class="container">
 <x-section-heading eyebrow="Learning areas" title="What would you like to develop?" text="These are areas for training conversations. Contact us to discuss your team's needs and available options." />
-<x-training-categories />
+<div class="learning-feature">
+<x-editorial-image name="professional-learning" alt="Conceptual illustration of adults taking part in professional learning." caption="Professional learning, illustrated." />
+<div><x-training-categories /></div>
+</div>
 <div class="section-divider">
 </div>
 <x-section-heading eyebrow="Programs" title="Explore available programs" />
