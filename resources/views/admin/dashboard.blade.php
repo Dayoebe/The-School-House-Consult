@@ -14,31 +14,35 @@
             'users' => 'Registered people',
         ];
     @endphp
-    <div class="min-h-screen lg:flex">
-        <aside class="w-full shrink-0 bg-[#10243d] text-white lg:min-h-screen lg:w-72">
-            <div class="flex items-center justify-between px-6 py-6 lg:block lg:px-7 lg:py-8">
-                <a class="font-display text-sm font-bold uppercase tracking-[.12em]" href="{{ route('admin.dashboard') }}">The School House <span class="text-[#ff9b8b]">Consult.</span></a>
-                <span class="rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-[#9fb4bf]">Admin</span>
+    <div class="min-h-screen lg:flex" x-data="{ sidebarOpen: window.innerWidth >= 1024 }" @resize.window="if (window.innerWidth >= 1024) sidebarOpen = true">
+        <aside class="w-full shrink-0 bg-[#10243d] text-white transition-[width] duration-300 lg:min-h-screen" :class="sidebarOpen ? 'lg:w-72' : 'lg:w-[88px]'">
+            <div class="flex items-center justify-between gap-3 px-6 py-6 lg:px-5 lg:py-8" :class="sidebarOpen ? 'lg:px-7' : 'lg:flex-col'">
+                <a class="flex min-w-0 items-center gap-3 overflow-hidden whitespace-nowrap font-display text-sm font-bold uppercase tracking-[.12em]" href="{{ route('admin.dashboard') }}">
+                    <img class="h-9 w-9 shrink-0 rounded-xl bg-white object-contain p-1" src="{{ asset(config('site.logo')) }}" alt="" width="36" height="36">
+                    <span x-show="sidebarOpen" x-transition.opacity>The School House <span class="text-[#ff9b8b]">Consult.</span></span>
+                </a>
+                <span class="hidden rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-[#9fb4bf] sm:inline-flex" x-show="sidebarOpen" x-transition.opacity>Admin</span>
+                <button class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/15 text-[#c5d5da] transition hover:bg-white/10 hover:text-white" type="button" @click="sidebarOpen = !sidebarOpen" :aria-label="sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'" :title="sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'"><i class="fa-solid fa-angles-left text-xs transition-transform duration-300" :class="sidebarOpen ? '' : 'rotate-180'" aria-hidden="true"></i></button>
             </div>
-            <nav class="hidden space-y-7 px-4 pb-8 lg:block" aria-label="Admin navigation">
+            <nav class="space-y-7 px-4 pb-8" :class="sidebarOpen ? 'block lg:px-4' : 'hidden lg:block lg:px-3'" aria-label="Admin navigation">
                 @foreach(config('menu') as $group)
                     <div>
-                        <p class="mb-2 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-[#78919d]">{{ $group['label'] }}</p>
+                        <p class="mb-2 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-[#78919d]" x-show="sidebarOpen" x-transition.opacity>{{ $group['label'] }}</p>
                         <div class="space-y-1">
                             @foreach($group['items'] as $item)
                                 @php($active = request()->routeIs($item['route']) && (($item['params']['section'] ?? null) === $section || ($item['route'] === 'admin.dashboard' && $section === null)))
-                                <a class="group flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition {{ $active ? 'bg-white text-navy shadow-lg shadow-black/10' : 'text-[#c5d5da] hover:bg-white/10 hover:text-white' }}" href="{{ route($item['route'], $item['params'] ?? []) }}">
+                                <a class="group relative flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition {{ $active ? 'bg-white text-navy shadow-lg shadow-black/10' : 'text-[#c5d5da] hover:bg-white/10 hover:text-white' }}" :class="sidebarOpen ? '' : 'justify-center'" href="{{ route($item['route'], $item['params'] ?? []) }}" title="{{ $item['label'] }}">
                                     <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $active ? 'bg-[#e5f2ed] text-teal' : 'bg-white/10 text-[#9fcfc0]' }}"><x-icon :name="$item['icon']" class="h-4 w-4" /></span>
-                                    <span>{{ $item['label'] }}</span>
+                                    <span class="whitespace-nowrap" x-show="sidebarOpen" x-transition.opacity>{{ $item['label'] }}</span>
                                 </a>
                             @endforeach
                         </div>
                     </div>
                 @endforeach
             </nav>
-            <div class="hidden border-t border-white/10 px-7 py-6 lg:block">
-                <a class="mb-5 flex items-center gap-3 text-xs text-[#c5d5da] hover:text-white" href="{{ route('home') }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View live website</a>
-                <form method="POST" action="{{ route('logout') }}">@csrf<button class="flex items-center gap-2 text-xs font-semibold text-[#ffb19e] hover:text-white" type="submit"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Sign out</button></form>
+            <div class="hidden border-t border-white/10 px-7 py-6 lg:block" :class="sidebarOpen ? '' : 'lg:px-3'">
+                <a class="mb-5 flex items-center gap-3 text-xs text-[#c5d5da] hover:text-white" :class="sidebarOpen ? '' : 'justify-center'" href="{{ route('home') }}" :title="sidebarOpen ? '' : 'View live website'"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span x-show="sidebarOpen" x-transition.opacity>View live website</span></a>
+                <form method="POST" action="{{ route('logout') }}">@csrf<button class="flex items-center gap-2 text-xs font-semibold text-[#ffb19e] hover:text-white" :class="sidebarOpen ? '' : 'mx-auto'" type="submit" :title="sidebarOpen ? '' : 'Sign out'"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i><span x-show="sidebarOpen" x-transition.opacity>Sign out</span></button></form>
             </div>
         </aside>
         <main class="min-w-0 flex-1">
@@ -47,9 +51,12 @@
                     <p class="text-[11px] font-bold uppercase tracking-[.17em] text-teal">The School House Consult / Control room</p>
                     <h1 class="mt-2 font-display text-2xl font-semibold tracking-[-.04em] text-navy sm:text-3xl">{{ $sectionTitles[$section] }}</h1>
                 </div>
-                <div class="hidden items-center gap-3 sm:flex">
+                <div class="flex items-center gap-3">
+                    <button class="grid h-10 w-10 place-items-center rounded-xl border border-[#dce7e1] bg-white text-teal shadow-sm lg:hidden" type="button" @click="sidebarOpen = !sidebarOpen" :aria-label="sidebarOpen ? 'Hide navigation menu' : 'Show navigation menu'" :title="sidebarOpen ? 'Hide navigation menu' : 'Show navigation menu'"><i class="fa-solid fa-bars" :class="sidebarOpen ? 'fa-xmark' : 'fa-bars'" aria-hidden="true"></i></button>
+                    <div class="hidden items-center gap-3 sm:flex">
                     <div class="grid h-10 w-10 place-items-center rounded-full bg-[#e5f2ed] text-sm font-bold text-teal">SA</div>
                     <div><p class="text-sm font-semibold text-navy">Super Admin</p><p class="text-xs text-muted">{{ auth()->user()->email }}</p></div>
+                    </div>
                 </div>
             </header>
             <div class="px-5 py-7 sm:px-8 lg:px-12 lg:py-10">
