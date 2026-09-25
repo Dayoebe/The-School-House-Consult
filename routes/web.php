@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminInboxController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Livewire\SitePage;
@@ -35,5 +36,8 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
 		Route::get('/', AdminDashboardController::class)->name('dashboard');
 		Route::get('/{section}', AdminDashboardController::class)->name('section');
 		Route::patch('/users/{user}/role', [AdminUserController::class, 'updateRole'])->name('users.role');
+		Route::patch('/consultations/{consultation}/status', [AdminInboxController::class, 'updateConsultationStatus'])->name('consultations.status');
+		Route::delete('/consultations/{consultation}', [AdminInboxController::class, 'destroyConsultation'])->name('consultations.destroy');
+		Route::patch('/messages/{message}/status', [AdminInboxController::class, 'updateMessageStatus'])->name('messages.status');
 	});
 });

@@ -19,6 +19,11 @@ class AdminDashboardController extends Controller
     public function __invoke(Request $request): View
     {
         $section = $request->route('section');
+        $consultationStatus = $request->string('status')->toString();
+
+        if (! in_array($consultationStatus, ['', 'new', 'in-progress', 'resolved', 'archived'], true)) {
+            $consultationStatus = '';
+        }
 
         abort_unless($section === null || in_array($section, [
             'services', 'programs', 'team', 'resources', 'case-studies', 'faqs', 'consultations', 'messages', 'settings', 'users',
@@ -39,6 +44,9 @@ class AdminDashboardController extends Controller
                 'faqs' => Faq::count(),
             ],
             'recentConsultations' => ConsultationRequest::query()->latest()->limit(5)->get(),
+            'consultations' => ConsultationRequest::query()->with('service')->when($consultationStatus !== '', fn ($query) => $query->where('status', $consultationStatus))->latest()->get(),
+            'consultationStatus' => $consultationStatus,
+            'messages' => ContactMessage::query()->latest()->get(),
             'users' => User::query()->latest()->get(),
         ]);
     }

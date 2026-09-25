@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\ConsultationRequest;
+use App\Models\ContactMessage;
 use Database\Seeders\AdminUserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -77,5 +79,36 @@ class AdminDashboardTest extends TestCase
             ->assertRedirect();
 
         $this->assertDatabaseHas('users', ['id' => $member->id, 'role' => 'admin']);
+    }
+
+    public function test_admin_can_view_submitted_contact_forms_and_update_status(): void
+    {
+        $this->seed(AdminUserSeeder::class);
+        $admin = User::where('email', 'super@admin.com')->firstOrFail();
+        $consultation = ConsultationRequest::create([
+            'full_name' => 'Consultation Visitor',
+            'organisation' => 'Example School',
+            'email' => 'consultation@example.com',
+            'phone' => '07061234567',
+            'organisation_type' => 'School / Institution',
+            'message' => 'We would like to discuss curriculum support for our school.',
+            'preferred_contact_method' => 'Email',
+        ]);
+        $message = ContactMessage::create([
+            'full_name' => 'Message Visitor',
+            'email' => 'message@example.com',
+            'subject' => 'A general enquiry',
+            'message' => 'Please share more information about your services.',
+        ]);
+
+        $this->actingAs($admin)->get(route('admin.section', ['section' => 'consultations']))
+            ->assertOk()->assertSee('Consultation Visitor')->assertSee('Example School');
+        $this->actingAs($admin)->get(route('admin.section', ['section' => 'messages']))
+            ->assertOk()->assertSee('A general enquiry')->assertSee('Message Visitor');
+        $this->actingAs($admin)->patch(route('admin.consultations.status', $consultation), ['status' => 'resolved'])->assertRedirect();
+        $this->actingAs($admin)->patch(route('admin.messages.status', $message), ['status' => 'in-progress'])->assertRedirect();
+
+        $this->assertDatabaseHas('consultation_requests', ['id' => $consultation->id, 'status' => 'resolved']);
+        $this->assertDatabaseHas('contact_messages', ['id' => $message->id, 'status' => 'in-progress']);
     }
 }
