@@ -1,3 +1,132 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .rich-text-editor:empty::before {
+        color: rgb(148 163 184);
+        content: attr(data-placeholder);
+        pointer-events: none;
+    }
+
+    .rich-text-editor h2,
+    .program-rich-text h2 {
+        @apply mb-3 mt-7 text-2xl font-extrabold leading-tight text-slate-950;
+    }
+
+    .rich-text-editor h3,
+    .program-rich-text h3 {
+        @apply mb-2 mt-6 text-xl font-extrabold leading-tight text-slate-950;
+    }
+
+    .rich-text-editor p,
+    .program-rich-text p {
+        @apply my-3;
+    }
+
+    .rich-text-editor ul,
+    .program-rich-text ul {
+        @apply my-4 list-disc space-y-2 pl-6;
+    }
+
+    .rich-text-editor ol,
+    .program-rich-text ol {
+        @apply my-4 list-decimal space-y-2 pl-6;
+    }
+
+    .rich-text-editor blockquote,
+    .program-rich-text blockquote {
+        @apply my-5 border-l-4 border-orange px-5 py-3 italic text-slate-700;
+        background-color: #fff7ed;
+    }
+
+    .rich-text-editor a,
+    .program-rich-text a {
+        @apply font-bold text-teal underline decoration-teal/30 underline-offset-4;
+    }
+}
+
+.public-hero {
+    background-color: #f7f3eb;
+    background-image:
+        radial-gradient(circle at 9% 18%, rgb(244 123 32 / 0.18), transparent 25rem),
+        radial-gradient(circle at 88% 72%, rgb(15 118 110 / 0.16), transparent 28rem),
+        linear-gradient(118deg, rgb(255 255 255 / 0.92) 0%, rgb(255 250 242 / 0.86) 46%, rgb(233 247 243 / 0.82) 100%);
+    border-bottom: 1px solid rgb(15 42 91 / 0.1);
+    color: #172033;
+    isolation: isolate;
+}
+
+.public-hero::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgb(15 42 91 / 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(15 42 91 / 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    content: '';
+    mask-image: linear-gradient(to right, black, transparent 72%);
+}
+
+.public-hero::after {
+    position: absolute;
+    right: clamp(-8rem, -5vw, -3rem);
+    top: clamp(-9rem, -8vw, -4rem);
+    z-index: -1;
+    width: clamp(18rem, 34vw, 34rem);
+    aspect-ratio: 1;
+    border: clamp(2.5rem, 6vw, 5.5rem) solid rgb(15 118 110 / 0.08);
+    border-radius: 9999px;
+    content: '';
+}
+
+.public-hero .text-white {
+    color: #172033;
+}
+
+.public-hero .text-slate-200,
+.public-hero .text-slate-300,
+.public-hero .text-slate-400 {
+    color: #526071;
+}
+
+.public-hero .text-\[\#ffc89f\],
+.public-hero .text-\[\#ffb47d\] {
+    color: #b5480a;
+}
+
+.public-hero .text-\[\#7bd7c4\] {
+    color: #0f766e;
+}
+
+.public-hero [class*='border-white'] {
+    border-color: rgb(15 42 91 / 0.13);
+}
+
+.public-hero [class*='bg-white/'] {
+    background-color: rgb(255 255 255 / 0.72);
+    box-shadow: 0 18px 50px rgb(15 42 91 / 0.09);
+    backdrop-filter: blur(12px);
+}
+
+.public-hero .bg-slate-900,
+.public-hero .bg-slate-900\/90 {
+    background-color: rgb(255 255 255 / 0.94);
+    color: #172033;
+}
+
+.public-hero img {
+    box-shadow: 0 28px 70px rgb(15 42 91 / 0.18);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .public-hero img {
+        transition: transform 500ms ease, box-shadow 500ms ease;
+    }
+
+    .public-hero img:hover {
+        box-shadow: 0 32px 80px rgb(15 42 91 / 0.23);
+        transform: translateY(-3px);
+    }
+}

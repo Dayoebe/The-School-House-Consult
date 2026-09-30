@@ -2,7 +2,7 @@
     @foreach([
         ['home', 'Home', 'home'],
         ['services.index', 'Services', 'grid'],
-        ['programs.index', 'Learn', 'book'],
+        ['summer-spark', 'Spark', 'brand-mark'],
         ['resources.index', 'Resources', 'document'],
         ['contact', 'Contact', 'chat'],
     ] as [$route, $label, $icon])

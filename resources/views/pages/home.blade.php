@@ -1,136 +1,54 @@
-<section x-data="{ loaded: false }" x-init="requestAnimationFrame(() => loaded = true)" class="relative overflow-hidden bg-[#10243d] text-white">
-<div class="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:52px_52px]"></div>
-<div class="pointer-events-none absolute -right-24 top-[-140px] h-[420px] w-[420px] rounded-full border-[70px] border-teal/20"></div>
-<div class="relative mx-auto grid min-h-[670px] w-[calc(100%-96px)] max-w-[1240px] grid-cols-[1.03fr_1fr] items-center gap-16 py-20 max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-8 max-[767px]:grid-cols-1 max-[767px]:py-14 max-[640px]:w-[calc(100%-40px)] max-[640px]:gap-10 max-[640px]:py-12">
-<div class="relative z-[1] py-2.5 max-[640px]:py-0">
-<p class="mb-6 flex items-center gap-3 text-[10px] font-bold uppercase leading-[1.65] tracking-[.2em] text-[#ffb19e]"><span class="h-2 w-2 rounded-full bg-coral shadow-[0_0_0_6px_rgba(239,111,97,.18)]"></span>Independent education consultancy</p>
-<h1 :class="loaded ? 'animate__animated animate__fadeInUp' : 'opacity-0'" class="mb-7 max-w-[720px] font-display text-[clamp(58px,6.8vw,98px)] font-semibold leading-[.9] tracking-[-.07em] text-white max-[1190px]:text-[68px] max-[640px]:text-[clamp(48px,13vw,72px)]">Shaping the<br>future of<br>
-<span class="text-[#7ed8c2]">education</span><span class="text-coral max-[640px]:hidden">.</span>
-</h1>
-<p :class="loaded ? 'animate__animated animate__fadeInUp animate__delay-1s' : 'opacity-0'" class="max-w-[465px] text-[20px] leading-[1.5] text-[#d7e4e8] max-[1190px]:text-[17px] max-[640px]:text-[17px]">Strategic educational solutions for schools, educators and communities.</p>
-<p class="mt-[17px] max-w-[445px] text-[14px] leading-[1.75] text-[#9fb4bf]">The School House Consult partners with stakeholders to develop practical solutions that promote educational excellence.</p>
-<div class="mt-[30px] flex flex-wrap gap-3 max-[640px]:grid max-[640px]:grid-cols-1 max-[640px]:gap-2.5">
-<a class="inline-flex min-h-[52px] items-center justify-center gap-6 rounded-full border border-coral bg-coral px-6 py-4 text-[13px] font-bold text-white shadow-[0_12px_25px_rgba(239,111,97,.22)] transition hover:-translate-y-0.5 hover:bg-[#df5e51] max-[640px]:min-h-[51px]" href="{{ route('services.index') }}">Explore Our Services <span class="text-[20px]" aria-hidden="true">↗</span>
-</a>
-<a class="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-[13px] font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-navy max-[640px]:min-h-[47px]" href="{{ route('contact') }}#consultation"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation</a>
-</div>
-<div class="mt-10 flex items-center gap-3.5 text-[11px] leading-[1.6] text-[#9fb4bf] max-[640px]:hidden">
-<span class="grid h-[37px] w-[37px] place-items-center rounded-full border border-white/20 text-[20px] text-[#7ed8c2]" aria-hidden="true">↗</span><span>Rooted in collaboration.<br>
-<strong class="font-semibold text-white">Focused on education.</strong>
-</span>
+<section id="top" class="public-hero relative overflow-hidden bg-slate-50 text-slate-950">
+<div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange/20 blur-3xl"></div><div class="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-teal/20 blur-3xl"></div>
+<div class="relative mx-auto grid min-h-[650px] w-[calc(100%-48px)] max-w-7xl grid-cols-[1.05fr_.95fr] items-center gap-14 py-16 max-[900px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)] max-[640px]:py-12">
+<div>
+<p class="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-[#ffc89f]"><x-icon name="brand-mark" class="h-5 w-5" /> Strategic education consultancy</p>
+<h1 class="mt-7 max-w-[760px] text-[clamp(44px,6.5vw,82px)] font-extrabold leading-[.98] tracking-[-.055em]">Stronger institutions.<span class="mt-2 block text-[#7bd7c4]">Better education.</span></h1>
+<p class="mt-7 max-w-[650px] text-[18px] leading-8 text-slate-300">The School House Consult helps school owners, boards, leaders and education stakeholders turn institutional priorities into clear strategy, stronger practice and sustainable progress.</p>
+<p class="mt-4 text-[13px] italic text-slate-400">...shaping the future of education globally.</p>
+<div class="mt-8 flex flex-wrap gap-3 max-[520px]:grid"><a class="inline-flex min-h-[50px] items-center justify-center gap-3 rounded-xl bg-orange px-6 py-3 text-[13px] font-extrabold text-slate-950 transition hover:bg-[#ff9b55]" href="{{ route('contact') }}#consultation">Request a consultation <span aria-hidden="true">↗</span></a><a class="inline-flex min-h-[50px] items-center justify-center gap-3 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-[13px] font-bold text-white transition hover:bg-white/10" href="{{ route('services.index') }}">Explore our expertise</a></div>
+<div class="mt-9 grid grid-cols-3 gap-3 max-[520px]:grid-cols-1">
+@foreach(['Institutional strategy'=>'Clear priorities and practical plans.', 'People & leadership'=>'Stronger teams and capable leaders.', 'Academic excellence'=>'Purposeful curriculum and practice.'] as $label => $copy)<div class="rounded-xl border border-white/10 bg-white/[.06] p-4"><p class="text-[12px] font-extrabold text-white">{{ $label }}</p><p class="mt-1 text-[11px] leading-5 text-slate-400">{{ $copy }}</p></div>@endforeach
 </div>
 </div>
-<div :class="loaded ? 'animate__animated animate__fadeInRight animate__delay-1s' : 'opacity-0'" class="relative px-0 pb-7 max-[767px]:mx-auto max-[767px]:w-full max-[767px]:max-w-[530px] max-[640px]:pb-3.5">
-<x-editorial-image name="education-collaboration" alt="Conceptual illustration of education professionals planning together around an open book." caption="A shared purpose. A thoughtful approach." priority />
-<div class="absolute -bottom-2 left-[-30px] flex items-center gap-3.5 rounded-2xl border border-white/15 border-l-4 border-l-coral bg-[#193451]/95 px-[22px] py-[18px] text-[11px] leading-[1.6] text-white shadow-[0_18px_40px_rgba(0,0,0,.22)] backdrop-blur max-[640px]:left-0"><x-icon name="book" class="text-[#7ed8c2]" /><span>Better education begins<br>with purposeful partnership.</span></div>
-<div class="absolute -right-8 top-8 grid h-24 w-24 rotate-6 place-items-center rounded-full bg-coral text-center text-[11px] font-bold uppercase leading-tight tracking-wider text-white shadow-xl max-[640px]:right-0">Ideas<br>into<br>action</div>
+<div class="relative max-[900px]:mx-auto max-[900px]:w-full max-[900px]:max-w-[650px]">
+<img class="aspect-[1.14] w-full rounded-3xl border border-white/10 object-cover shadow-2xl" src="{{ asset('images/illustrations/education-collaboration-1536.webp') }}" alt="Education professionals collaborating around a table" width="1536" height="1536" fetchpriority="high">
+<div class="absolute -bottom-5 -left-5 max-w-[270px] rounded-2xl border border-white/10 bg-slate-900 p-5 shadow-xl max-[520px]:left-3"><p class="text-[10px] font-bold uppercase tracking-widest text-orange">Our mission</p><p class="mt-2 text-[13px] leading-6 text-slate-200">Partnering with stakeholders to achieve educational excellence.</p></div>
+</div>
+</div>
+</section>
 
+<nav class="sticky top-[76px] z-20 border-b border-slate-200 bg-white/95 py-3 backdrop-blur max-[767px]:top-[76px]" aria-label="Homepage sections"><div class="mx-auto flex w-[calc(100%-48px)] max-w-7xl gap-2 overflow-x-auto max-[640px]:w-[calc(100%-32px)]">@foreach(['expertise'=>'Expertise','approach'=>'Our approach','spark'=>'Summer Spark','leadership'=>'Leadership','contact-home'=>'Contact'] as $anchor=>$label)<a class="whitespace-nowrap rounded-full bg-slate-100 px-4 py-2 text-[11px] font-bold text-slate-700 transition hover:bg-orange hover:text-slate-950" href="#{{ $anchor }}">{{ $label }}</a>@endforeach</div></nav>
+
+<section class="bg-slate-50 py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.8fr_1.2fr] gap-14 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+<div><p class="text-[11px] font-extrabold uppercase tracking-[.14em] text-orange">Our purpose</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.04em] text-slate-950">Educational excellence is built deliberately.</h2></div>
+<div><p class="text-[18px] font-semibold leading-8 text-slate-800">We work with institutions that are ready to examine what they do, clarify where they are going and strengthen how they get there.</p><p class="mt-4 text-[15px] leading-8 text-slate-600">Our mission is to partner with stakeholders to achieve educational excellence. That partnership begins with context: understanding the institution, the people it serves and the priorities that matter most. From there, we bring structure to complex challenges and help leadership teams identify practical next steps that can be implemented, reviewed and sustained.</p><a class="mt-6 inline-flex items-center gap-2 text-[13px] font-extrabold text-teal hover:text-orange" href="{{ route('about') }}">How we work <span aria-hidden="true">→</span></a></div>
+</div></section>
+
+<section id="expertise" class="bg-white py-16 max-[640px]:py-12"><div class="mx-auto w-[calc(100%-48px)] max-w-7xl max-[640px]:w-[calc(100%-32px)]">
+<div class="mb-8 flex items-end justify-between gap-8 max-[700px]:block"><div><p class="text-[11px] font-extrabold uppercase tracking-[.14em] text-orange">Consulting expertise</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold tracking-[-.04em] text-slate-950">Four pillars. One connected strategy.</h2><p class="mt-3 max-w-2xl text-[15px] leading-7 text-slate-600">Educational institutions do not improve through isolated interventions. Our services connect strategy, academic practice, people and community.</p></div><a class="rounded-xl border border-slate-300 px-4 py-3 text-[12px] font-bold text-slate-800 hover:bg-slate-100 max-[700px]:mt-5 max-[700px]:inline-flex" href="{{ route('services.index') }}">View all 13 services</a></div>
+<div class="grid grid-cols-4 gap-4 max-[1050px]:grid-cols-2 max-[600px]:grid-cols-1">
+@foreach([
+['Institutional & Strategy','Policy, facilities, research and school improvement planning.','document','border-blue-200 bg-blue-50 text-blue-800'],
+['Academic & Curriculum','Curriculum design, educational technology and inclusive support.','story','border-cyan-200 bg-cyan-50 text-cyan-800'],
+['Talent & Leadership','Recruitment, professional development, coaching and leadership.','leadership','border-orange-200 bg-orange-50 text-orange-800'],
+['Community Engagement','Stronger relationships between institutions, parents and communities.','people','border-emerald-200 bg-emerald-50 text-emerald-800'],
+] as [$title,$copy,$icon,$style])<article class="rounded-2xl border p-6 {{ $style }}"><x-icon :name="$icon" class="h-7 w-7" /><h3 class="mt-5 text-[18px] font-extrabold text-slate-950">{{ $title }}</h3><p class="mt-3 text-[13px] leading-6 text-slate-600">{{ $copy }}</p><a class="mt-5 inline-flex text-[12px] font-extrabold text-slate-800" href="{{ route('services.index') }}">Explore pillar →</a></article>@endforeach
 </div>
-</div>
-</section>
-<div class="border-y border-line"><div class="mx-auto flex min-h-[82px] w-[calc(100%-96px)] max-w-[1240px] items-center justify-between gap-5 text-[13px] text-[#b3bcc9] max-[1190px]:w-[calc(100%-64px)] max-[767px]:flex-wrap max-[767px]:justify-center max-[640px]:w-[calc(100%-40px)] max-[640px]:justify-start max-[640px]:gap-2"><span class="text-[10px] uppercase tracking-[.1em] text-muted max-[767px]:w-full max-[767px]:text-center max-[640px]:text-left">Working together with</span>
-<strong>Schools & Institutions</strong>
-<span aria-hidden="true">/</span>
-<strong>Educators & Leaders</strong>
-<span aria-hidden="true">/</span>
-<strong>Communities & Stakeholders</strong>
-</div>
-</div>
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-96px)] max-w-[1240px] grid-cols-2 gap-[100px] max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-10 max-[767px]:grid-cols-1 max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Welcome to The School House Consult" title="Partnering for Educational Excellence" />
-<div>
-<p class="text-[23px] leading-[1.5] text-navy">Education moves forward when we work together.</p>
-<p class="mt-[18px] text-muted">We are an education consulting company working with schools, educators and communities to explore challenges, shape ideas and plan practical next steps.</p>
-<blockquote class="my-6 border-l-[3px] border-orange pl-[21px] text-[17px] text-navy">{{ config('site.mission') }}</blockquote>
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('about') }}">Discover our approach <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-</div>
-</section>
-<section class="bg-soft py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Who we serve" title="Different perspectives. Shared purpose." />
-<x-audiences />
-</div>
-</section>
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]"><div class="mb-9 flex items-center justify-between gap-9 max-[640px]:block">
-<x-section-heading eyebrow="How we can help" title="Our Areas of Expertise" text="Practical support across the people, systems and experiences that shape education." />
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange max-[640px]:mt-4" href="{{ route('services.index') }}">View all services <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-<p class="mb-[15px] hidden items-center justify-between text-[11px] text-muted max-[640px]:flex">Swipe to explore our expertise <span aria-hidden="true">→</span></p>
-<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-flow-col max-[640px]:grid-cols-none max-[640px]:auto-cols-[86%] max-[640px]:gap-3.5 max-[640px]:overflow-x-auto max-[640px]:snap-x max-[640px]:snap-proximity" tabindex="0" role="region" aria-label="Our education consulting services">
-@foreach($services as $service)<x-service-card :service="$service" />
-@endforeach</div>
-</div>
-</section>
-<section class="bg-navy py-[92px] max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-96px)] max-w-[1240px] grid-cols-2 gap-[100px] max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-10 max-[767px]:grid-cols-1 max-[640px]:w-[calc(100%-40px)]">
-<div>
-<p class="mb-5 text-[11px] font-bold uppercase tracking-[.17em] text-[#ffad70]">Why partner with us</p>
-<h2 class="text-[clamp(30px,3vw,43px)] font-semibold leading-[1.15] tracking-[-.035em] text-white">Thoughtful strategy.<br>Practical next steps.</h2>
-<p class="my-6 mb-[30px] max-w-[400px] text-[#c5d0e0]">Every educational setting has its own context. Our approach starts with understanding yours.</p>
-<a class="inline-flex min-h-[50px] items-center justify-center gap-6 rounded border border-white bg-white px-[23px] py-[15px] text-[13px] font-bold text-navy hover:bg-[#edf1f7]" href="{{ route('about') }}">Our approach <span aria-hidden="true">↗</span>
-</a>
-</div>
-<div>
-@foreach(['Strategic collaboration'=>'Start with a shared understanding of priorities and work towards a considered plan.', 'Stakeholder engagement'=>'Bring the perspectives of educators, leaders and communities into the conversation.', 'Professional development'=>'Make space for learning, reflection and the development of professional practice.', 'Practical educational solutions'=>'Connect ideas to the needs and day-to-day realities of educational settings.'] as $heading=>$copy)<div class="flex gap-6 border-t border-[#36517a] py-6 first:border-0 first:pt-0">
-<span class="mt-1 text-[12px] text-[#ffad70]">0{{ $loop->iteration }}</span>
-<div>
-<h3 class="mb-2 text-[20px] font-semibold text-white">{{ $heading }}</h3>
-<p class="text-[14px] text-[#c5d0e0]">{{ $copy }}</p>
-</div>
-</div>
-@endforeach</div>
-</div>
-</section>
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-@if($member = $team->first())<x-team-card :member="$member" />
-<div class="mx-auto mt-5 max-w-[1030px] text-right"><a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('team') }}">View Our Team <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-@endif</div>
-</section>
-<section class="bg-soft py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]"><div class="mb-9 flex items-center justify-between gap-9 max-[640px]:block">
-<x-section-heading eyebrow="Programs & Training" title="Learning that supports better practice." text="Explore professional development across teaching, leadership and school improvement." />
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange max-[640px]:mt-4" href="{{ route('programs.index') }}">Explore training <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-<div class="my-[30px] grid grid-cols-[1fr_1.05fr] items-center gap-12 max-[767px]:grid-cols-1">
-<x-editorial-image name="professional-learning" alt="Conceptual illustration of an educator leading a professional learning discussion." caption="Room to learn. Space to grow." />
-<div><x-training-categories /><a class="mt-3.5 inline-flex items-center gap-3 py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('contact') }}#consultation">Discuss your team's learning needs ↗</a></div>
-</div>
-@if($programs->isNotEmpty())<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-cols-1">
-@foreach($programs as $program)<x-program-card :program="$program" />
-@endforeach</div>
-@else<p class="text-[14px] text-muted">Program details will be published as they become available. <a class="text-navy underline underline-offset-4 hover:text-orange" href="{{ route('contact') }}#consultation">Discuss your training needs.</a>
-</p>
-@endif</div>
-</section>
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]"><div class="mb-9 flex items-center justify-between gap-9 max-[640px]:block">
-<x-section-heading eyebrow="Resources & Insights" title="A space for ideas in education." />
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange max-[640px]:mt-4" href="{{ route('resources.index') }}">All resources <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-@if($articles->isNotEmpty())<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-cols-1">
-@foreach($articles as $article)<x-article-card :article="$article" />
-@endforeach</div>
-@else<x-empty-state title="Fresh perspectives are on the way" text="Articles and resources will appear here when they are published. In the meantime, explore our areas of expertise." />
-@endif</div>
-</section>
-<section class="bg-soft py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]"><div class="mb-9 flex items-center justify-between gap-9 max-[640px]:block">
-<x-section-heading eyebrow="Case studies" title="From collaboration to practice." />
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange max-[640px]:mt-4" href="{{ route('case-studies.index') }}">View case studies <span class="text-[22px]" aria-hidden="true">↗</span>
-</a>
-</div>
-@if($caseStudies->isNotEmpty())<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-2 max-[640px]:grid-cols-1">
-@foreach($caseStudies as $caseStudy)<x-case-study-card :case-study="$caseStudy" />
-@endforeach</div>
-@else<x-empty-state title="Project stories, shared thoughtfully" text="Case studies will be published as our projects and impact stories become available." />
-@endif</div>
-</section>
-<x-newsletter />
-<x-cta />
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Get in touch" title="Let's start a conversation." />
-<x-contact-details />
-</div>
-</section>
+</div></section>
+
+<section id="approach" class="bg-slate-950 py-16 text-white max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.8fr_1.2fr] gap-16 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+<div><p class="text-[11px] font-extrabold uppercase tracking-[.14em] text-[#ffb47d]">How partnership works</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.04em]">From institutional questions to practical action.</h2><p class="mt-5 text-[14px] leading-7 text-slate-400">Every engagement is shaped around context rather than a generic template.</p></div>
+<div class="grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">@foreach(['Listen & diagnose'=>'We begin by understanding the institution, its priorities and the perspectives of key stakeholders.','Clarify priorities'=>'We distinguish urgent symptoms from the strategic issues that require focused attention.','Design the response'=>'We develop an appropriate pathway across planning, professional learning and implementation.','Support progress'=>'We help connect recommendations to action, reflection and continuous improvement.'] as $title=>$copy)<div class="rounded-2xl border border-white/10 bg-white/[.05] p-5"><span class="text-[11px] font-extrabold text-orange">0{{ $loop->iteration }}</span><h3 class="mt-3 text-[17px] font-extrabold">{{ $title }}</h3><p class="mt-2 text-[13px] leading-6 text-slate-400">{{ $copy }}</p></div>@endforeach</div>
+</div></section>
+
+<section id="spark" class="bg-[#fff7ed] py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.8fr_1.2fr] items-center gap-14 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+<img class="aspect-[1.25] w-full rounded-3xl border border-orange-200 object-cover object-top shadow-sm" src="{{ asset('image/WhatsApp Image 2026-09-17 at 12.52.39.jpeg') }}" alt="My Summer Spark activity book" width="1024" height="1280" loading="lazy">
+<div><p class="inline-flex rounded-full bg-orange-100 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-800">Featured initiative · Ages 2–15</p><h2 class="mt-5 text-[clamp(32px,4.5vw,54px)] font-extrabold leading-tight tracking-[-.045em] text-slate-950">Keep young minds active with My Summer Spark.</h2><p class="mt-5 text-[15px] leading-8 text-slate-600">A colourful series of age-appropriate activity books spanning early learning, literacy, numeracy, story writing, world discovery and practical life skills.</p><div class="mt-6 flex flex-wrap gap-3"><a class="rounded-xl bg-slate-950 px-5 py-3 text-[12px] font-extrabold text-white" href="{{ route('summer-spark') }}">Explore the series</a><a class="rounded-xl border border-orange-300 bg-white px-5 py-3 text-[12px] font-extrabold text-slate-800" href="{{ route('contact') }}">Ask about availability</a></div></div>
+</div></section>
+
+<section id="leadership" class="bg-white py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.62fr_1.38fr] items-center gap-14 max-[800px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+@if($member = $team->first())<img class="aspect-[.95] w-full max-w-[430px] rounded-3xl bg-slate-950 object-cover object-top" src="{{ asset($member->photograph) }}" alt="{{ $member->name }}, {{ $member->role }}" width="864" height="1080" loading="lazy"><div><p class="text-[11px] font-extrabold uppercase tracking-[.14em] text-orange">Consulting leadership</p><h2 class="mt-3 text-[clamp(32px,4vw,50px)] font-extrabold tracking-[-.04em] text-slate-950">{{ $member->name }}</h2><p class="mt-2 text-[13px] font-bold text-teal">{{ $member->role }}</p><p class="mt-5 max-w-2xl text-[15px] leading-8 text-slate-600">As Principal Consultant, Adedamola Ogidan provides strategic direction for the firm’s work with educational institutions and stakeholders. Her focus is on helping organisations clarify priorities, strengthen leadership, advance curriculum quality and establish practical pathways for sustainable growth.</p><a class="mt-6 inline-flex items-center gap-2 text-[13px] font-extrabold text-slate-900" href="{{ route('team') }}">Meet our leadership →</a></div>@endif
+</div></section>
+
+<section id="contact-home" class="bg-slate-100 py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[1.2fr_.8fr] gap-8 max-[800px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]"><div class="rounded-3xl bg-navy p-8 text-white sm:p-10"><p class="text-[11px] font-extrabold uppercase tracking-widest text-[#ffb47d]">Start a focused conversation</p><h2 class="mt-4 max-w-2xl text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.04em]">What could become stronger in your institution?</h2><p class="mt-4 max-w-2xl text-[14px] leading-7 text-slate-300">Tell us about the challenge, opportunity or development priority you are considering. We will help you identify an appropriate starting point.</p><a class="mt-7 inline-flex rounded-xl bg-orange px-5 py-3 text-[12px] font-extrabold text-slate-950" href="{{ route('contact') }}#consultation">Request a consultation</a></div><div class="rounded-3xl border border-slate-200 bg-white p-8"><p class="text-[11px] font-extrabold uppercase tracking-widest text-teal">Direct contact</p><div class="mt-5 space-y-4 text-[13px] text-slate-700">@foreach(config('site.phones') as $display=>$phone)<a class="flex items-center gap-3 font-bold" href="tel:{{ $phone }}"><i class="fa-solid fa-phone text-orange" aria-hidden="true"></i>{{ $display }}</a>@endforeach<a class="flex items-center gap-3 font-bold break-all" href="mailto:{{ config('site.email') }}"><i class="fa-solid fa-envelope text-orange" aria-hidden="true"></i>{{ config('site.email') }}</a><p class="flex items-start gap-3 leading-6"><i class="fa-solid fa-location-dot mt-1 text-orange" aria-hidden="true"></i>{{ config('site.address') }}</p></div></div></div></section>

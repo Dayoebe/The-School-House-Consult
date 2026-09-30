@@ -12,11 +12,11 @@
 		default => 'fa-sparkles',
 	};
 @endphp
-<section class="relative overflow-hidden border-b border-[#e8dfd4] bg-[linear-gradient(120deg,#f6eee4_0%,#fffaf2_52%,#dce9e3_100%)] py-[88px] max-[640px]:py-12">
-<div class="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(15,118,110,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,118,110,.08)_1px,transparent_1px)] [background-size:42px_42px]"></div>
-<div class="relative mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[1190px]:w-[calc(100%-64px)] max-[640px]:w-[calc(100%-40px)]">
-<p class="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase leading-[1.65] tracking-[.17em] text-teal"><i class="fa-solid {{ $heroIcon }} text-[15px] text-coral" aria-hidden="true"></i>{{ $eyebrow }}</p>
-<h1 class="max-w-[890px] font-display text-[clamp(40px,5.4vw,76px)] font-semibold leading-[.98] tracking-[-.06em] text-navy max-[640px]:text-[42px]">{{ $title }}</h1>
-<p class="mt-[25px] max-w-[715px] text-[18px] text-muted max-[640px]:text-[15px]">{{ $text }}</p>
+<section class="public-hero relative overflow-hidden border-b border-slate-200 bg-slate-50 py-20 text-slate-950 max-[640px]:py-14">
+<div class="pointer-events-none absolute -left-20 -top-20 h-60 w-60 rounded-full bg-orange/15 blur-3xl"></div><div class="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-teal/15 blur-3xl"></div>
+<div class="relative mx-auto w-[calc(100%-48px)] max-w-7xl max-[640px]:w-[calc(100%-32px)]">
+<p class="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[.15em] text-[#ffc89f]"><i class="fa-solid {{ $heroIcon }}" aria-hidden="true"></i>{{ $eyebrow }}</p>
+<h1 class="mt-5 max-w-[980px] text-[clamp(40px,5.5vw,70px)] font-extrabold leading-[1.02] tracking-[-.05em] text-white">{{ $title }}</h1>
+<p class="mt-6 max-w-[760px] text-[17px] leading-8 text-slate-300 max-[640px]:text-[15px]">{{ $text }}</p>
 </div>
 </section>

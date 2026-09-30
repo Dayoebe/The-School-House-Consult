@@ -1,58 +1,43 @@
-<x-page-hero eyebrow="About us" title="A shared commitment to education." text="The School House Consult brings stakeholders together around educational challenges, opportunities and development needs." />
-<section class="py-[92px] max-[640px]:py-12">
-<div class="mx-auto grid w-[calc(100%-96px)] max-w-[1240px] grid-cols-2 gap-[100px] max-[1190px]:w-[calc(100%-64px)] max-[1190px]:gap-10 max-[767px]:grid-cols-1 max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Who we are" title="Partnership at the heart of progress." />
-<div>
-<p class="text-[23px] leading-[1.5] text-navy">We are an education consulting company based in Akure, Ondo State, Nigeria.</p>
-<p class="mt-[18px] text-muted">Our work spans educational research, curriculum development, professional learning, leadership, school improvement and stakeholder engagement.</p>
-<p class="mt-[18px] text-muted">We work with schools, educators and communities to develop practical solutions that promote educational excellence.</p>
-</div>
-</div>
-</section>
-<div class="mx-auto mb-[75px] w-[calc(100%-96px)] max-w-[920px] max-[640px]:mb-[50px] max-[640px]:w-[calc(100%-40px)]"><x-editorial-image name="education-collaboration" alt="Conceptual illustration of collaborative education planning." caption="Education moves forward through shared thinking." /></div>
-<section class="bg-soft py-[92px] max-[640px]:py-12">
-<div class="mx-auto grid w-[calc(100%-96px)] max-w-[1240px] grid-cols-2 gap-7 max-[640px]:w-[calc(100%-40px)] max-[767px]:grid-cols-1">
-<article class="border border-line border-t-[3px] border-t-orange bg-white p-10"><p class="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[.17em] text-orange">Our mission</p>
-<h2 class="text-[30px] font-semibold leading-[1.15] tracking-[-.035em] text-navy">{{ config('site.mission') }}</h2>
-</article>
-<article class="border border-line border-t-[3px] border-t-orange bg-white p-10"><p class="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[.17em] text-orange">Our vision</p>
-@if(config('site.vision'))
-    <h2 class="text-[30px] font-semibold leading-[1.15] tracking-[-.035em] text-navy">{{ config('site.vision') }}</h2>
-@else
-    <h2 class="text-[30px] font-semibold leading-[1.15] tracking-[-.035em] text-navy">Vision statement</h2>
-    <p class="mt-[18px] text-muted">Our official vision statement will be shared here once confirmed.</p>
-@endif
-</article>
-</div>
-</section>
-<section class="py-[92px] max-[640px]:py-12">
-<div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Our approach" title="Understand. Collaborate. Develop." />
-<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-1">
-@foreach(['Understand the context'=>'Listen to the needs, priorities and perspectives of those involved.', 'Work together'=>'Bring stakeholders into purposeful conversations and planning.', 'Plan practical steps'=>'Connect educational priorities to considered actions and professional learning.'] as $heading=>$copy)<article class="border-t border-line pr-6 pt-7"><span class="mb-5 block text-[11px] font-bold uppercase tracking-[.17em] text-orange">0{{ $loop->iteration }}</span>
-<h3 class="mb-4 text-[22px] font-semibold text-navy">{{ $heading }}</h3>
-<p class="text-[14px] text-muted">{{ $copy }}</p>
-</article>
-@endforeach</div>
-</div>
-</section>
-<section class="bg-soft py-[92px] max-[640px]:py-12">
-<div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-<x-section-heading eyebrow="Who we serve" title="Education is a shared endeavour." />
-<x-audiences />
-</div>
-</section>
-<section class="py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]"><div class="mb-9 flex items-center justify-between gap-9 max-[640px]:block">
-<x-section-heading eyebrow="Areas of expertise" title="Support across the educational landscape." />
-<a class="inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange max-[640px]:mt-4" href="{{ route('services.index') }}">Explore all 13 services ↗</a>
-</div>
-<div class="grid grid-cols-3 gap-6 max-[767px]:grid-cols-1">
-@foreach($services->take(3) as $service)<x-service-card :service="$service" />
-@endforeach</div>
-</div>
-</section>
-<section class="bg-soft py-[92px] max-[640px]:py-12"><div class="mx-auto w-[calc(100%-96px)] max-w-[1240px] max-[640px]:w-[calc(100%-40px)]">
-@if($member = $team->first())<x-team-card :member="$member" />
-@endif</div>
-</section>
-<x-cta />
+<section class="public-hero relative overflow-hidden bg-slate-50 text-slate-950">
+<div class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange/15 blur-3xl"></div><div class="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-teal/15 blur-3xl"></div>
+<div class="relative mx-auto grid min-h-[590px] w-[calc(100%-48px)] max-w-7xl grid-cols-[1.05fr_.95fr] items-center gap-14 py-16 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)] max-[640px]:py-12">
+<div><p class="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[.15em] text-[#ffc89f]"><i class="fa-solid fa-compass" aria-hidden="true"></i> About The School House Consult</p><h1 class="mt-7 max-w-[760px] text-[clamp(42px,6vw,72px)] font-extrabold leading-[1.02] tracking-[-.055em]">Strategy for institutions that want to move education forward.</h1><p class="mt-6 max-w-[670px] text-[17px] leading-8 text-slate-300">We help educational institutions and stakeholders bring greater clarity to their priorities, strengthen the people and systems behind learning, and create practical pathways for progress.</p><div class="mt-8 flex flex-wrap gap-3"><a class="rounded-xl bg-orange px-5 py-3 text-[12px] font-extrabold text-slate-950" href="#our-story">Discover our approach</a><a class="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-[12px] font-bold text-white" href="{{ route('contact') }}#consultation">Work with us</a></div></div>
+<div class="relative"><img class="aspect-[1.15] w-full rounded-3xl border border-white/10 object-cover shadow-2xl" src="{{ asset('images/illustrations/education-collaboration-1536.webp') }}" alt="Education professionals collaborating on institutional priorities" width="1536" height="1536" fetchpriority="high"><div class="absolute -bottom-5 -left-5 max-w-[285px] rounded-2xl border border-white/10 bg-slate-900 p-5 shadow-xl max-[520px]:left-3"><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">Our mission</p><p class="mt-2 text-[13px] leading-6 text-slate-200">{{ config('site.mission') }}</p></div></div>
+</div></section>
+
+<section id="our-story" class="bg-white py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.7fr_1.3fr] gap-16 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+<div><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">Company overview</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.045em] text-slate-950">Based in Akure. Guided by a global educational vision.</h2><div class="mt-6 inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"><span class="grid h-9 w-9 place-items-center rounded-lg bg-orange-100 text-orange-700"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span><div><p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Our base</p><p class="text-[12px] font-extrabold text-slate-800">Akure, Nigeria</p></div></div></div>
+<div class="space-y-5 text-[15px] leading-8 text-slate-600"><p class="text-[20px] font-semibold leading-9 text-slate-900">The School House Consult is an educational consulting agency supporting institutions and stakeholders with the strategy, systems and professional capacity required for meaningful growth.</p><p>Our work brings together institutional planning, curriculum development, leadership, professional learning and community engagement. This connected perspective allows us to look beyond isolated challenges and consider how decisions, people and educational practice influence one another.</p><p>While rooted in an understanding of local educational realities, we are guided by a wider ambition: to help educational institutions become more thoughtful, responsive and prepared for the future. We approach each engagement as a purposeful partnership—listening carefully, examining context and helping stakeholders translate educational priorities into practical action.</p></div>
+</div></section>
+
+<section class="bg-slate-50 py-16 max-[640px]:py-12"><div class="mx-auto w-[calc(100%-48px)] max-w-7xl max-[640px]:w-[calc(100%-32px)]">
+<div class="mb-8 max-w-3xl"><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">What anchors our work</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold tracking-[-.045em] text-slate-950">Purpose before prescription.</h2><p class="mt-4 text-[15px] leading-7 text-slate-600">We begin with the institution’s context and build every recommendation around the people, priorities and realities involved.</p></div>
+<div class="grid grid-cols-2 gap-5 max-[700px]:grid-cols-1">
+<article class="rounded-3xl border border-blue-200 bg-blue-50 p-7 sm:p-9"><span class="grid h-12 w-12 place-items-center rounded-xl bg-blue-100 text-blue-700"><x-icon name="compass" /></span><p class="mt-6 text-[10px] font-extrabold uppercase tracking-widest text-blue-700">Our mission</p><h3 class="mt-3 text-[clamp(24px,3vw,34px)] font-extrabold leading-tight text-slate-950">{{ config('site.mission') }}</h3><p class="mt-4 text-[13px] leading-6 text-slate-600">Partnership keeps the people responsible for educational change involved in understanding priorities and shaping the way forward.</p></article>
+<article class="rounded-3xl border border-emerald-200 bg-emerald-50 p-7 sm:p-9"><span class="grid h-12 w-12 place-items-center rounded-xl bg-emerald-100 text-emerald-700"><x-icon name="world" /></span><p class="mt-6 text-[10px] font-extrabold uppercase tracking-widest text-emerald-700">Our direction</p><h3 class="mt-3 text-[clamp(24px,3vw,34px)] font-extrabold leading-tight text-slate-950">...shaping the future of education globally.</h3><p class="mt-4 text-[13px] leading-6 text-slate-600">Our work connects immediate institutional needs with the longer-term capacity required for educational relevance, resilience and excellence.</p></article>
+</div></div></section>
+
+<section class="bg-slate-950 py-16 text-white max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.7fr_1.3fr] gap-16 max-[850px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+<div><p class="text-[10px] font-extrabold uppercase tracking-widest text-[#ffb47d]">Our consulting approach</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.045em]">Listen deeply. Think clearly. Move purposefully.</h2><p class="mt-5 text-[14px] leading-7 text-slate-400">Our role is to bring structure to important educational conversations and help turn shared priorities into achievable next steps.</p></div>
+<div class="grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">@foreach([
+['Understand the context','We listen to the institution’s needs, priorities and stakeholder perspectives before defining the problem.','research'],
+['Build shared clarity','We help stakeholders distinguish immediate symptoms from the strategic questions requiring attention.','people'],
+['Develop the pathway','We connect priorities to practical planning, professional learning and appropriate institutional action.','compass'],
+['Support progress','We encourage reflection, review and learning as institutions move from recommendations into practice.','growth'],
+] as [$title,$copy,$icon])<article class="rounded-2xl border border-white/10 bg-white/[.05] p-5"><span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-[#7bd7c4]"><x-icon :name="$icon" class="h-5 w-5" /></span><h3 class="mt-4 text-[16px] font-extrabold">{{ $title }}</h3><p class="mt-2 text-[13px] leading-6 text-slate-400">{{ $copy }}</p></article>@endforeach</div>
+</div></section>
+
+<section class="bg-white py-16 max-[640px]:py-12"><div class="mx-auto w-[calc(100%-48px)] max-w-7xl max-[640px]:w-[calc(100%-32px)]">
+<div class="mb-8 max-w-3xl"><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">Who we serve</p><h2 class="mt-3 text-[clamp(30px,4vw,48px)] font-extrabold tracking-[-.045em] text-slate-950">Progress depends on the right people working together.</h2><p class="mt-4 text-[15px] leading-7 text-slate-600">Our engagements are designed for the people who shape educational direction, practice and participation.</p></div>
+<div class="grid grid-cols-3 gap-5 max-[800px]:grid-cols-1">@foreach([
+['School owners, proprietors & boards','Strategic support for institutional direction, policy, improvement planning, staffing and learning environments.','building','border-blue-200 bg-blue-50 text-blue-700'],
+['Educators & school leaders','Professional learning, instructional coaching, leadership development and reflective support for stronger practice.','leadership','border-orange-200 bg-orange-50 text-orange-700'],
+['Parents, communities & stakeholders','Purposeful engagement that strengthens communication, participation and shared responsibility for education.','people','border-emerald-200 bg-emerald-50 text-emerald-700'],
+] as [$title,$copy,$icon,$style])<article class="rounded-2xl border p-6 {{ $style }}"><x-icon :name="$icon" class="h-7 w-7" /><h3 class="mt-5 text-[18px] font-extrabold text-slate-950">{{ $title }}</h3><p class="mt-3 text-[13px] leading-6 text-slate-600">{{ $copy }}</p></article>@endforeach</div>
+</div></section>
+
+<section class="bg-slate-100 py-16 max-[640px]:py-12"><div class="mx-auto grid w-[calc(100%-48px)] max-w-7xl grid-cols-[.7fr_1.3fr] items-center gap-14 max-[800px]:grid-cols-1 max-[640px]:w-[calc(100%-32px)]">
+@if($member = $team->first())<div class="relative"><img class="aspect-[.88] w-full max-w-[440px] rounded-3xl bg-slate-950 object-cover object-top shadow-sm" src="{{ asset($member->photograph) }}" alt="{{ $member->name }}, {{ $member->role }}" width="864" height="1080" loading="lazy"><span class="absolute bottom-4 left-4 rounded-xl bg-white px-4 py-3 text-[11px] font-extrabold text-slate-900 shadow-lg">{{ $member->role }}</span></div><div><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">Meet our leadership</p><h2 class="mt-3 text-[clamp(32px,4vw,52px)] font-extrabold tracking-[-.045em] text-slate-950">{{ $member->name }}</h2><p class="mt-5 max-w-2xl text-[15px] leading-8 text-slate-600">As Principal Consultant, Adedamola Ogidan provides strategic direction for The School House Consult and its work with educational institutions and stakeholders. Her focus is on helping organisations clarify priorities, strengthen leadership, advance curriculum quality and create practical pathways for sustainable institutional growth.</p><p class="mt-4 max-w-2xl text-[15px] leading-8 text-slate-600">Her approach connects educational vision with the people, structures and actions required to move an institution forward—thoughtfully, collaboratively and with attention to context.</p><div class="mt-7 flex flex-wrap gap-3"><a class="rounded-xl bg-navy px-5 py-3 text-[12px] font-extrabold text-white" href="{{ route('contact') }}#consultation">Start a conversation</a><a class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-[12px] font-extrabold text-slate-800" href="{{ route('services.index') }}">Explore our expertise</a></div></div>@endif
+</div></section>
+
+<section class="bg-white py-16 max-[640px]:py-12"><div class="mx-auto rounded-3xl bg-navy p-8 text-white max-[640px]:w-[calc(100%-32px)] sm:p-12 lg:max-w-7xl"><div class="flex items-end justify-between gap-10 max-[750px]:flex-col max-[750px]:items-start"><div><p class="text-[10px] font-extrabold uppercase tracking-widest text-[#ffb47d]">The next step</p><h2 class="mt-3 max-w-3xl text-[clamp(30px,4vw,48px)] font-extrabold leading-tight tracking-[-.045em]">Bring us the educational priority that matters most right now.</h2><p class="mt-4 max-w-2xl text-[14px] leading-7 text-slate-300">A focused conversation can help clarify the challenge, the stakeholders involved and a practical place to begin.</p></div><a class="shrink-0 rounded-xl bg-orange px-6 py-3 text-[12px] font-extrabold text-slate-950" href="{{ route('contact') }}#consultation">Request a consultation →</a></div></div></section>

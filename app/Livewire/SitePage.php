@@ -9,6 +9,7 @@ use App\Models\Faq;
 use App\Models\Program;
 use App\Models\Service;
 use App\Models\TeamMember;
+use App\Support\RichText;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Url;
@@ -46,12 +47,13 @@ class SitePage extends Component
     public function render(): View
     {
         $meta = [
-            'home' => ['Education Consulting for Schools, Educators & Communities', 'Strategic educational solutions, curriculum development and professional learning. Partner with The School House Consult in Akure, Nigeria.'],
-            'about' => ['About Us', 'Learn about our mission, collaborative approach and Principal Consultant at The School House Consult.'],
-            'services.index' => ['Education Consulting Services', 'Explore 13 areas of expertise, from curriculum design and instructional coaching to leadership and school improvement planning.'],
-            'programs.index' => ['Programs & Training', 'Explore professional learning areas for teachers and school leaders, and enquire about training needs.'],
+            'home' => ['Strategic Education Consulting for Institutional Excellence', 'Strategic guidance for school owners, boards and education stakeholders. Partner with The School House Consult to strengthen institutions and improve educational outcomes.'],
+            'about' => ['About Our Education Consulting Firm', 'Meet The School House Consult, an Akure-based education consultancy supporting institutional growth, leadership development and curriculum excellence.'],
+            'services.index' => ['Education Consulting Services for Schools and Institutions', 'Explore strategic education consulting across institutional planning, curriculum, leadership, talent development and community engagement.'],
+            'programs.index' => ['Professional Learning Programmes for Educators & Leaders', 'Explore professional-learning pathways for educators, school leaders and institutional teams, or discuss a focused training need with The School House Consult.'],
+            'summer-spark' => ['My Summer Spark Activity Books for Ages 2–15', 'Explore age-appropriate My Summer Spark activity books designed around early learning, literacy, numeracy, world discovery and life skills.'],
             'team' => ['Our Team', 'Meet Adedamola Ogidan, Principal Consultant at The School House Consult.'],
-            'resources.index' => ['Education Resources & Insights', 'Articles and perspectives on teaching, leadership and educational development from The School House Consult.'],
+            'resources.index' => ['Education Insights for School Leaders & Stakeholders', 'Explore considered perspectives on educational leadership, institutional strategy, curriculum, professional practice and school community.'],
             'case-studies.index' => ['Case Studies', 'Project stories and educational consulting case studies from The School House Consult, as they become available.'],
             'faq' => ['Frequently Asked Questions', 'Find out what we do, who we work with and how to contact The School House Consult.'],
             'contact' => ['Contact & Request a Consultation', 'Discuss your educational challenge with The School House Consult. Contact our Akure office or submit a consultation request.'],
@@ -90,12 +92,23 @@ class SitePage extends Component
             };
             $record = $model::published()->where('slug', $this->slug)->firstOrFail();
             $data['record'] = $record;
-            $meta[$this->page] = [$record->seo_title ?: $record->title, $record->seo_description ?: ($record->excerpt ?: ($record->summary ?: $record->description))];
+            $metaDescription = $record->seo_description ?: ($record->excerpt ?: ($record->summary ?: $record->description));
+            if ($record instanceof Program) {
+                $metaDescription = RichText::plainText($metaDescription);
+            }
+            $meta[$this->page] = [$record->seo_title ?: $record->title, $metaDescription];
             if ($record->featured_image) {
                 $image = asset($record->featured_image);
             }
             if ($record instanceof Article) {
                 $publishedArticle = $record;
+                $data['relatedArticles'] = Article::published()
+                    ->with('category')
+                    ->whereKeyNot($record->getKey())
+                    ->when($record->category_id, fn ($query) => $query->orderByRaw('category_id = ? desc', [$record->category_id]))
+                    ->latest('published_at')
+                    ->limit(3)
+                    ->get();
             }
         }
         [$title, $description] = $meta[$this->page];

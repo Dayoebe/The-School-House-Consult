@@ -1,16 +1,5 @@
-@props(['article'])<article class="group overflow-hidden rounded-[24px] border border-[#e7ded1] bg-white/80 shadow-[0_10px_30px_rgba(11,42,91,.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(11,42,91,.12)]">
-@if($article->featured_image)<img class="aspect-[1.6] w-full object-cover" src="{{ asset($article->featured_image) }}" alt="" width="640" height="400" loading="lazy">
-@else<div class="grid aspect-[1.6] place-items-center bg-[#e9eef5] text-navy" aria-hidden="true">
-<x-icon name="book" />
-</div>
-@endif<div class="p-7">
-<p class="mb-3 text-[11px] font-bold uppercase tracking-[.17em] text-teal">{{ $article->category?->name ?? 'Insights' }}</p>
-<h3 class="mb-[15px] font-display text-[22px] font-semibold leading-[1.1] tracking-[-.02em] text-navy">
-<a href="{{ route('resources.show', $article) }}">{{ $article->title }}</a>
-</h3>
-<p class="text-[14px] text-muted">{{ $article->excerpt }}</p>
-<time class="my-5 mb-3 block text-[12px] text-muted" datetime="{{ $article->published_at->toDateString() }}">{{ $article->published_at->format('j F Y') }}</time>
-<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('resources.show', $article) }}">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
-</a>
-</div>
+@props(['article'])
+<article class="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-[0_18px_42px_rgba(15,23,42,.09)]">
+@if($article->featured_image)<div class="overflow-hidden bg-slate-100"><img class="aspect-[1.65] w-full object-cover transition duration-500 group-hover:scale-[1.03]" src="{{ asset($article->featured_image) }}" alt="{{ $article->title }}" width="640" height="388" loading="lazy"></div>@else<div class="relative grid aspect-[1.65] place-items-center overflow-hidden bg-slate-950 text-white"><div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-teal/20 blur-2xl"></div><span class="relative grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/10 text-[#ffb47d]"><i class="fa-regular fa-newspaper text-xl" aria-hidden="true"></i></span></div>@endif
+<div class="flex flex-1 flex-col p-6"><div class="flex flex-wrap items-center gap-2 text-[10px] font-extrabold uppercase tracking-wider"><span class="text-blue-700">{{ $article->category?->name ?? 'Insights' }}</span><span class="text-slate-300">•</span><time class="text-slate-500" datetime="{{ $article->published_at->toDateString() }}">{{ $article->published_at->format('j M Y') }}</time></div><h3 class="mt-4 text-[21px] font-extrabold leading-tight tracking-[-.025em] text-slate-950"><a href="{{ route('resources.show', $article) }}">{{ $article->title }}</a></h3><p class="mt-3 text-[13px] leading-6 text-slate-600">{{ Str::limit($article->excerpt, 170) }}</p><a class="mt-auto inline-flex items-center gap-2 pt-5 text-[12px] font-extrabold text-slate-900 group-hover:text-blue-700" href="{{ route('resources.show', $article) }}">Read insight <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i></a></div>
 </article>

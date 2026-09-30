@@ -1,22 +1,26 @@
-const CACHE_NAME = 'school-house-public-assets-v1';
+const CACHE_NAME = 'school-house-consult-assets-v2';
 const base = new URL('./', self.location.href);
 const localUrl = (path) => new URL(path, base).href;
 const offlineUrl = localUrl('offline.html');
 const coreAssets = [
     offlineUrl,
+    localUrl('site.webmanifest'),
+    localUrl('images/brand/School_House_Logo.png'),
+    localUrl('images/brand/icon-180.png'),
     localUrl('images/brand/icon-192.png'),
     localUrl('images/brand/icon-512.png'),
-    localUrl('images/brand/mark-256.webp'),
+    localUrl('images/brand/icon-maskable-192.png'),
+    localUrl('images/brand/icon-maskable-512.png'),
 ];
 
 self.addEventListener('install', (event) => {
-    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(coreAssets)));
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(coreAssets)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
     event.waitUntil((async () => {
         const names = await caches.keys();
-        await Promise.all(names.filter((name) => name.startsWith('school-house-public-assets-') && name !== CACHE_NAME).map((name) => caches.delete(name)));
+        await Promise.all(names.filter((name) => (name.startsWith('school-house-public-assets-') || name.startsWith('school-house-consult-assets-')) && name !== CACHE_NAME).map((name) => caches.delete(name)));
         await self.clients.claim();
     })());
 });

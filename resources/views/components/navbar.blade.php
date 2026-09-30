@@ -1,16 +1,15 @@
-<div class="bg-navy text-[10px] tracking-[.02em] text-[#dce5f2] max-[767px]:hidden">
-    <div class="mx-auto flex min-h-8 w-[calc(100%-96px)] max-w-[1240px] items-center gap-[30px] max-[1190px]:w-[calc(100%-64px)] max-[640px]:w-[calc(100%-40px)]">
-        <span>Partnering for educational excellence</span>
-        <a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a>
-        <a href="tel:+2347062220159">0706-222-0159</a>
+<div class="border-b border-slate-200 bg-slate-50 text-[10px] tracking-[.02em] text-slate-600 max-[767px]:hidden">
+    <div class="mx-auto flex min-h-9 w-[calc(100%-96px)] max-w-[1320px] items-center justify-between gap-8 max-[1190px]:w-[calc(100%-64px)]">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-orange" aria-hidden="true"></i>{{ config('site.address') }}</span>
+        <div class="flex items-center gap-7"><a class="hover:text-orange" href="mailto:{{ config('site.email') }}"><i class="fa-solid fa-envelope mr-1" aria-hidden="true"></i>{{ config('site.email') }}</a><a class="hover:text-orange" href="tel:+2347062220159"><i class="fa-solid fa-phone mr-1" aria-hidden="true"></i>0706-222-0159</a></div>
     </div>
 </div>
-<header class="sticky top-0 z-30 border-b border-line bg-white/95">
-    <div class="mx-auto flex min-h-[94px] w-[calc(100%-96px)] max-w-[1240px] items-center justify-between gap-7 max-[1190px]:min-h-[82px] max-[1190px]:w-[calc(100%-64px)] max-[767px]:min-h-[76px] max-[640px]:w-[calc(100%-40px)]">
+<header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
+    <div class="mx-auto flex min-h-[102px] w-[calc(100%-96px)] max-w-[1320px] items-center justify-between gap-8 max-[1190px]:min-h-[82px] max-[1190px]:w-[calc(100%-64px)] max-[767px]:min-h-[76px] max-[640px]:w-[calc(100%-40px)]">
         <x-brand />
-        <nav id="main-navigation" class="flex items-center gap-5 max-[1190px]:hidden" aria-label="Main navigation">
+        <nav id="main-navigation" class="flex items-center gap-8 max-[1190px]:hidden" aria-label="Main navigation">
             <x-desktop-navigation />
-            <a href="{{ route('contact') }}#consultation" class="inline-flex min-h-[42px] items-center justify-center gap-2 rounded border border-orange bg-orange px-3.5 py-[11px] text-[11px] font-bold text-[#14233a] hover:bg-[#df6811]"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Request a Consultation</a>
+            <a href="{{ route('contact') }}#consultation" class="inline-flex min-h-[44px] items-center justify-center gap-3 rounded-xl bg-navy px-5 py-2 text-[11px] font-bold text-white transition hover:bg-teal">Book a Consultation <span aria-hidden="true">↗</span></a>
         </nav>
         <div class="flex items-center gap-2 max-[767px]:gap-1.5 min-[1191px]:hidden">
             <a class="grid h-[46px] w-[46px] place-items-center rounded-xl border border-line bg-white text-navy hover:bg-soft max-[767px]:h-[43px] max-[767px]:w-[43px]" href="{{ config('site.whatsapp') }}" aria-label="Contact us on WhatsApp"><x-icon name="chat" /></a>

@@ -13,9 +13,11 @@ class SiteContentSeeder extends Seeder
     public function run(): void
     {
         $services = json_decode(file_get_contents(__DIR__.'/services.json'), true, flags: JSON_THROW_ON_ERROR);
+        $serviceCategories = collect(config('site.service_groups'))
+            ->flatMap(fn (array $group, string $category) => collect(array_keys($group['services']))->mapWithKeys(fn (string $title) => [$title => $category]));
         foreach ($services as $index => [$title, $icon, $description, $activities, $audience]) {
             Service::firstOrCreate(['slug' => Str::slug($title)], [
-                'title' => $title, 'icon' => $icon, 'description' => $description,
+                'title' => $title, 'icon' => $icon, 'category' => $serviceCategories[$title] ?? 'Institutional & Strategy', 'description' => $description,
                 'introduction' => $description.' We work with stakeholders to understand their context and discuss appropriate next steps.',
                 'activities' => explode('|', $activities), 'audience' => $audience, 'sort_order' => $index, 'is_active' => true,
             ]);

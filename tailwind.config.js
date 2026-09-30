@@ -18,11 +18,10 @@ export default {
         coral: '#ef6f61',
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-        display: ['Bricolage Grotesque', 'sans-serif'],
+        sans: ['Manrope', 'sans-serif'],
+        display: ['Manrope', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
-

@@ -1,6 +1,17 @@
 @props(['name' => 'book'])
 <svg {{ $attributes->merge(['class' => 'icon']) }} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 @switch($name)
+@case('brand-mark')
+<path d="M3 8.5c2.9-.8 5.8-.3 9 1.8 3.2-2.1 6.1-2.6 9-1.8v10.2c-2.8-.7-5.7-.2-9 1.8-3.3-2-6.2-2.5-9-1.8V8.5Z" stroke="#0b2a5b" stroke-width="1.7"/>
+<path d="M12 10.3v10.2M7.2 6.4h9.6L12 3 7.2 6.4Z" stroke="#f47b20" stroke-width="1.7"/>
+<path d="M9 13.3h6M9.7 16h4.6" stroke="#159eb4" stroke-width="1.5"/>
+@break
+@case('spark')<path d="M12 2.5c.6 5.8 3.7 8.9 9.5 9.5-5.8.6-8.9 3.7-9.5 9.5-.6-5.8-3.7-8.9-9.5-9.5 5.8-.6 8.9-3.7 9.5-9.5Z" stroke="#f47b20"/><path d="M19 2v4M17 4h4" stroke="#159eb4"/>@break
+@case('letters')<path d="m4 19 5-14 5 14M6 14h6M15.5 8.5h4.2v10h-4.2a3 3 0 0 1 0-6h4.2"/>@break
+@case('numbers')<path d="M5 8a3 3 0 1 1 5.6 1.5L5 18h6M15 7v8h5M20 4v14"/>@break
+@case('world')<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>@break
+@case('story')<path d="M4 5.5c3-.9 5.7-.3 8 1.7 2.3-2 5-2.6 8-1.7v13c-3-.9-5.7-.3-8 1.7-2.3-2-5-2.6-8-1.7v-13ZM12 7.2v13"/><path d="M7 10h2M7 13h2M15 10h2M15 13h2"/>@break
+@case('leadership')<path d="M12 3 4 7l8 4 8-4-8-4ZM7 9.5V14c2.7 2 7.3 2 10 0V9.5M20 7v6"/><path d="M5 21c.8-2.8 3.3-4.5 7-4.5s6.2 1.7 7 4.5"/>@break
 @case('home')<path d="m3 10 9-7 9 7v11h-6v-7H9v7H3V10Z"/>@break
 @case('grid')<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>@break
 @case('close')<path d="m6 6 12 12M6 18 18 6"/>@break

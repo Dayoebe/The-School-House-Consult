@@ -29,11 +29,13 @@ class PublicWebsiteTest extends TestCase
 
     public function test_all_public_pages_have_metadata_and_one_main_heading(): void
     {
-        foreach (['/', '/about', '/services', '/programs', '/team', '/resources', '/case-studies', '/faq', '/contact'] as $url) {
+        foreach (['/', '/about', '/services', '/summer-spark', '/programs', '/team', '/resources', '/case-studies', '/faq', '/contact'] as $url) {
             $response = $this->get($url)->assertOk()->assertSee('name="description"', false)->assertSee('rel="canonical"', false)->assertSee('property="og:image"', false);
             $this->assertSame(1, substr_count($response->getContent(), '<h1'), $url);
         }
-        $this->get('/')->assertSee('Shaping the')->assertSee('Adedamola Ogidan');
+        $this->get('/')->assertSee('Elevating')->assertSee('Adedamola Ogidan')->assertSee('delivering excellence in education');
+        $this->get('/services')->assertSee('Institutional &amp; Strategy', false)->assertSee('Parent and Community Engagement');
+        $this->get('/summer-spark')->assertSee('Ages 2–15')->assertSee('Tracing, colouring and matching')->assertSee('life skills');
     }
 
     public function test_all_thirteen_services_resolve_and_inactive_services_are_private(): void
@@ -143,6 +145,6 @@ class PublicWebsiteTest extends TestCase
     {
         $this->get('/robots.txt')->assertOk()->assertSee(route('sitemap'));
         $this->get('/does-not-exist')->assertNotFound()->assertSee('Page Not Found')->assertSee('Return Home')->assertSee('noindex, follow');
-        $this->get('/sitemap.xml')->assertOk()->assertHeader('Content-Type', 'application/xml')->assertSee(route('contact'))->assertSee(route('services.show', Service::first()));
+        $this->get('/sitemap.xml')->assertOk()->assertHeader('Content-Type', 'application/xml')->assertSee(route('contact'))->assertSee(route('summer-spark'))->assertSee(route('services.show', Service::first()));
     }
 }

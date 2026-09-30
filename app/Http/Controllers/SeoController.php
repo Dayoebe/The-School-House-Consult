@@ -17,7 +17,7 @@ class SeoController extends Controller
 
     public function sitemap(): Response
     {
-        $urls = collect(['home', 'about', 'services.index', 'programs.index', 'team', 'resources.index', 'case-studies.index', 'faq', 'contact'])->map(fn ($name) => route($name));
+        $urls = collect(['home', 'about', 'services.index', 'summer-spark', 'programs.index', 'team', 'resources.index', 'case-studies.index', 'faq', 'contact'])->map(fn ($name) => route($name));
         foreach ([Service::class => 'services.show', Program::class => 'programs.show', Article::class => 'resources.show', CaseStudy::class => 'case-studies.show'] as $model => $route) {
             $model::published()->select('slug')->each(function ($record) use ($urls, $route) {
                 $urls->push(route($route, $record));

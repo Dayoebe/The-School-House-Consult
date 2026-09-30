@@ -25,13 +25,13 @@
 <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="School House">
+<meta name="apple-mobile-web-app-title" content="School House Consult">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="application-name" content="School House Consult">
 <meta name="school-house-service-worker" content="{{ asset('sw.js') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org', '@type'=>'Organization', 'name'=>config('site.name'), 'logo'=>asset(config('site.logo')), 'url'=>url('/'), 'description'=>config('site.mission'), 'email'=>config('site.email'), 'telephone'=>array_values(config('site.phones')), 'address'=>['@type'=>'PostalAddress','streetAddress'=>'First Floor Ekundayo House, Oda Road','addressLocality'=>'Akure','addressRegion'=>'Ondo State','addressCountry'=>'NG']], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @isset($publishedArticle)<script type="application/ld+json">{!! json_encode(array_filter(['@context'=>'https://schema.org','@type'=>'Article','headline'=>$publishedArticle->title,'description'=>$publishedArticle->excerpt,'datePublished'=>$publishedArticle->published_at->toIso8601String(),'dateModified'=>$publishedArticle->updated_at->toIso8601String(),'author'=>$publishedArticle->author ? ['@type'=>'Person','name'=>$publishedArticle->author] : null,'mainEntityOfPage'=>$canonical,'image'=>$image]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 @endisset
@@ -43,6 +43,7 @@
 <x-navbar />
 <main id="main-content">{{ $slot }}</main>
 <x-footer />
+<x-install-app />
 <x-mobile-navigation />
 <div class="fixed bottom-5 left-1/2 z-[45] max-w-[calc(100%-32px)] -translate-x-1/2 rounded-[10px] border border-[#dc9d67] bg-[#fff2e5] px-[18px] py-[13px] text-[13px] text-[#713708] shadow-[0_4px_16px_#0b2a5b12] max-[767px]:bottom-[88px]" data-connection-notice role="status" hidden>You’re offline. Reconnect before sending an enquiry.</div>
 @livewireScripts</body>

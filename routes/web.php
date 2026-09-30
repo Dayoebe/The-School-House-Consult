@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\SeoController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminInboxController;
+use App\Http\Controllers\AdminProgramController;
+use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SeoController;
 use App\Livewire\SitePage;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,7 @@ Route::get('/services', SitePage::class)->name('services.index');
 Route::get('/services/{service:slug}', SitePage::class)->name('services.show');
 Route::get('/programs', SitePage::class)->name('programs.index');
 Route::get('/programs/{program:slug}', SitePage::class)->name('programs.show');
+Route::get('/summer-spark', SitePage::class)->name('summer-spark');
 Route::get('/team', SitePage::class)->name('team');
 Route::get('/resources', SitePage::class)->name('resources.index');
 Route::get('/resources/{article:slug}', SitePage::class)->name('resources.show');
@@ -32,12 +35,18 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.st
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
-	Route::middleware(['auth', 'admin'])->group(function (): void {
-		Route::get('/', AdminDashboardController::class)->name('dashboard');
-		Route::get('/{section}', AdminDashboardController::class)->name('section');
-		Route::patch('/users/{user}/role', [AdminUserController::class, 'updateRole'])->name('users.role');
-		Route::patch('/consultations/{consultation}/status', [AdminInboxController::class, 'updateConsultationStatus'])->name('consultations.status');
-		Route::delete('/consultations/{consultation}', [AdminInboxController::class, 'destroyConsultation'])->name('consultations.destroy');
-		Route::patch('/messages/{message}/status', [AdminInboxController::class, 'updateMessageStatus'])->name('messages.status');
-	});
+    Route::middleware(['auth', 'admin'])->group(function (): void {
+        Route::get('/', AdminDashboardController::class)->name('dashboard');
+        Route::get('/{section}', AdminDashboardController::class)->name('section');
+        Route::patch('/users/{user}/role', [AdminUserController::class, 'updateRole'])->name('users.role');
+        Route::patch('/consultations/{consultation}/status', [AdminInboxController::class, 'updateConsultationStatus'])->name('consultations.status');
+        Route::delete('/consultations/{consultation}', [AdminInboxController::class, 'destroyConsultation'])->name('consultations.destroy');
+        Route::patch('/messages/{message}/status', [AdminInboxController::class, 'updateMessageStatus'])->name('messages.status');
+        Route::post('/services', [AdminServiceController::class, 'store'])->name('services.store');
+        Route::patch('/services/{serviceId}', [AdminServiceController::class, 'update'])->name('services.update');
+        Route::delete('/services/{serviceId}', [AdminServiceController::class, 'destroy'])->name('services.destroy');
+        Route::post('/programs', [AdminProgramController::class, 'store'])->name('programs.store');
+        Route::patch('/programs/{programId}', [AdminProgramController::class, 'update'])->name('programs.update');
+        Route::delete('/programs/{programId}', [AdminProgramController::class, 'destroy'])->name('programs.destroy');
+    });
 });

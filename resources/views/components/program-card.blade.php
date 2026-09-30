@@ -1,12 +1,5 @@
-@props(['program'])<article class="group overflow-hidden rounded-[24px] border border-[#e7ded1] bg-white/80 shadow-[0_10px_30px_rgba(11,42,91,.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(11,42,91,.12)]">
-@if($program->featured_image)<img class="aspect-[1.6] w-full object-cover" src="{{ asset($program->featured_image) }}" alt="" width="640" height="400" loading="lazy">
-@endif<div class="p-7">
-<p class="mb-3 text-[11px] font-bold uppercase tracking-[.17em] text-teal">Programs & Training</p>
-<h3 class="mb-[15px] font-display text-[22px] font-semibold leading-[1.1] tracking-[-.02em] text-navy">{{ $program->title }}</h3>
-<p class="text-[14px] text-muted">{{ Str::limit($program->description, 180) }}</p>
-@if($program->target_audience)<p class="mt-[18px] text-[14px] text-muted">{{ $program->target_audience }}</p>
-@endif @if($program->duration)<p class="mt-[18px] text-[14px] text-muted">Duration: {{ $program->duration }}</p>
-@endif<a class="mt-[15px] inline-flex items-center gap-[22px] py-2 text-[13px] font-bold text-navy hover:text-orange" href="{{ route('programs.show', $program) }}">Explore program <i class="fa-solid fa-arrow-up-right-from-square text-[11px]" aria-hidden="true"></i>
-</a>
-</div>
+@props(['program'])
+<article class="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-[0_18px_42px_rgba(15,23,42,.09)]">
+@if($program->featured_image)<div class="overflow-hidden bg-slate-100"><img class="aspect-[1.65] w-full object-cover transition duration-500 group-hover:scale-[1.03]" src="{{ asset($program->featured_image) }}" alt="{{ $program->title }}" width="640" height="388" loading="lazy"></div>@else<div class="grid aspect-[1.65] place-items-center bg-slate-950 text-white"><span class="grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/10 text-[#ffb47d]"><i class="fa-solid fa-graduation-cap text-xl" aria-hidden="true"></i></span></div>@endif
+<div class="flex flex-1 flex-col p-6"><p class="text-[10px] font-extrabold uppercase tracking-widest text-orange">Programme & professional learning</p><h3 class="mt-3 text-[21px] font-extrabold leading-tight tracking-[-.025em] text-slate-950">{{ $program->title }}</h3><p class="mt-3 text-[13px] leading-6 text-slate-600">{{ Str::limit(\App\Support\RichText::plainText($program->description), 170) }}</p>@if($program->target_audience || $program->duration)<div class="mt-5 space-y-2 border-t border-slate-100 pt-4 text-[11px] text-slate-600">@if($program->target_audience)<p class="flex items-start gap-2"><i class="fa-solid fa-users mt-0.5 w-4 text-teal" aria-hidden="true"></i><span>{{ $program->target_audience }}</span></p>@endif @if($program->duration)<p class="flex items-start gap-2"><i class="fa-regular fa-clock mt-0.5 w-4 text-teal" aria-hidden="true"></i><span>{{ $program->duration }}</span></p>@endif</div>@endif<a class="mt-auto inline-flex items-center gap-2 pt-5 text-[12px] font-extrabold text-slate-900 group-hover:text-orange-700" href="{{ route('programs.show', $program) }}">Explore programme <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i></a></div>
 </article>

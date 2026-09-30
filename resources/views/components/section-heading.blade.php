@@ -11,7 +11,7 @@
 	};
 @endphp
 <div {{ $attributes->merge(['class' => 'mb-9 max-w-[690px]']) }}>
-@if($eyebrow)<p class="mb-5 flex items-center gap-2.5 text-[11px] font-bold uppercase leading-[1.65] tracking-[.17em] text-teal"><i class="fa-solid {{ $eyebrowIcon }} text-[13px] text-coral" aria-hidden="true"></i>{{ $eyebrow }}</p>
-@endif<h2 class="max-w-[640px] font-display text-[clamp(30px,3vw,46px)] font-semibold leading-[1.05] tracking-[-.045em] text-navy">{{ $title }}</h2>
-@if($text)<p class="mt-[18px] max-w-[580px] text-[17px] text-muted">{{ $text }}</p>
+@if($eyebrow)<p class="mb-5 flex items-center gap-3 text-[10px] font-extrabold uppercase tracking-[.2em] text-teal"><span class="h-px w-8 bg-orange"></span>{{ $eyebrow }}</p>
+@endif<h2 class="max-w-[680px] font-display text-[clamp(36px,4vw,58px)] font-medium leading-[1.02] tracking-[-.04em] text-navy">{{ $title }}</h2>
+@if($text)<p class="mt-[22px] max-w-[650px] text-[16px] leading-8 text-muted">{{ $text }}</p>
 @endif</div>

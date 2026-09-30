@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Program extends Model
 {
@@ -20,6 +21,11 @@ class Program extends Model
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', 'published');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProgramImage::class)->orderBy('sort_order')->orderBy('id');
     }
 
     public function getRouteKeyName(): string
