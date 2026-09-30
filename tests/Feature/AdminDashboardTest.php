@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use App\Models\ConsultationRequest;
 use App\Models\ContactMessage;
+use App\Models\Program;
+use App\Models\Service;
+use App\Models\User;
 use Database\Seeders\AdminUserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -110,5 +112,90 @@ class AdminDashboardTest extends TestCase
 
         $this->assertDatabaseHas('consultation_requests', ['id' => $consultation->id, 'status' => 'resolved']);
         $this->assertDatabaseHas('contact_messages', ['id' => $message->id, 'status' => 'in-progress']);
+    }
+
+    public function test_admin_can_filter_and_delete_consultation_requests(): void
+    {
+        $this->seed(AdminUserSeeder::class);
+        $admin = User::where('email', 'super@admin.com')->firstOrFail();
+        $newRequest = ConsultationRequest::create([
+            'full_name' => 'New Request', 'email' => 'new@example.com', 'phone' => '07061234567',
+            'organisation_type' => 'Other', 'message' => 'This is a new consultation request for testing.',
+            'preferred_contact_method' => 'Email', 'status' => 'new',
+        ]);
+        $archivedRequest = ConsultationRequest::create([
+            'full_name' => 'Archived Request', 'email' => 'archived@example.com', 'phone' => '07061234568',
+            'organisation_type' => 'Other', 'message' => 'This is an archived consultation request for testing.',
+            'preferred_contact_method' => 'Email', 'status' => 'archived',
+        ]);
+
+        $this->actingAs($admin)->get(route('admin.section', ['section' => 'consultations', 'status' => 'new']))
+            ->assertOk()->assertSee('New Request')->assertDontSee('Archived Request');
+        $this->actingAs($admin)->delete(route('admin.consultations.destroy', $archivedRequest))->assertRedirect();
+
+        $this->assertDatabaseHas('consultation_requests', ['id' => $newRequest->id]);
+        $this->assertDatabaseMissing('consultation_requests', ['id' => $archivedRequest->id]);
+    }
+
+    public function test_admin_service_edits_drive_the_public_expertise_pages(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $service = Service::create([
+            'title' => 'Original Service',
+            'slug' => 'original-service',
+            'icon' => 'book',
+            'category' => 'Academic & Curriculum',
+            'description' => 'Original public description.',
+            'introduction' => 'Original service introduction.',
+            'activities' => ['Original activity'],
+            'audience' => 'School leaders',
+            'sort_order' => 2,
+            'is_active' => true,
+        ]);
+
+        $this->actingAs($admin)->patch(route('admin.services.update', ['serviceId' => $service->getKey()]), [
+            'title' => 'Updated Curriculum Service',
+            'slug' => 'updated-curriculum-service',
+            'icon' => 'story',
+            'category' => 'Academic & Curriculum',
+            'description' => 'Updated public description from the administrator.',
+            'introduction' => 'Updated service introduction from the administrator.',
+            'activities' => "Curriculum review\nImplementation planning",
+            'audience' => 'Curriculum leaders and school teams',
+            'sort_order' => 1,
+            'is_active' => '1',
+        ])->assertRedirect();
+
+        $service->refresh();
+        $this->assertSame(['Curriculum review', 'Implementation planning'], $service->activities);
+        $this->get(route('services.index'))->assertOk()->assertSee('Updated Curriculum Service')->assertSee('Updated public description from the administrator.');
+        $this->get(route('services.show', $service))->assertOk()->assertSee('Updated service introduction from the administrator.');
+    }
+
+    public function test_admin_program_edits_drive_the_public_programme_pages(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $program = Program::create([
+            'title' => 'Original Programme',
+            'slug' => 'original-programme',
+            'description' => 'Original programme description.',
+            'target_audience' => 'School leaders',
+            'duration' => 'Two days',
+            'status' => 'draft',
+        ]);
+
+        $this->actingAs($admin)->patch(route('admin.programs.update', ['programId' => $program->getKey()]), [
+            'title' => 'Strategic Leadership Programme',
+            'slug' => 'strategic-leadership-programme',
+            'description' => 'A confirmed programme description published from the administrator.',
+            'target_audience' => 'School owners and leadership teams',
+            'duration' => 'Three days',
+            'status' => 'published',
+        ])->assertRedirect();
+
+        $program->refresh();
+        $this->assertSame('published', $program->status);
+        $this->get(route('programs.index'))->assertOk()->assertSee('Strategic Leadership Programme');
+        $this->get(route('programs.show', $program))->assertOk()->assertSee('A confirmed programme description published from the administrator.');
     }
 }
