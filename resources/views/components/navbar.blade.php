@@ -7,11 +7,22 @@
 <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
     <div class="mx-auto flex min-h-[102px] w-[calc(100%-96px)] max-w-[1320px] items-center justify-between gap-8 max-[1190px]:min-h-[82px] max-[1190px]:w-[calc(100%-64px)] max-[767px]:min-h-[76px] max-[640px]:w-[calc(100%-40px)]">
         <x-brand />
-        <nav id="main-navigation" class="flex items-center gap-8 max-[1190px]:hidden" aria-label="Main navigation">
+        <nav id="main-navigation" class="flex items-center gap-4 max-[1279px]:hidden" aria-label="Main navigation">
             <x-desktop-navigation />
+            @guest
+                <div class="flex items-center gap-1 border-l border-slate-200 pl-3" aria-label="Account access">
+                    <a class="inline-flex min-h-[42px] items-center gap-2 rounded-lg px-3 text-[11px] font-bold text-navy transition hover:bg-slate-100 hover:text-teal" href="{{ route('login', ['redirect' => url()->current()]) }}"><i class="fa-solid fa-arrow-right-to-bracket text-[10px]" aria-hidden="true"></i> Log in</a>
+                    <a class="inline-flex min-h-[42px] items-center gap-2 rounded-lg border border-navy/15 bg-slate-50 px-3 text-[11px] font-bold text-navy transition hover:border-teal hover:bg-emerald-50 hover:text-teal" href="{{ route('register') }}"><i class="fa-solid fa-user-plus text-[10px]" aria-hidden="true"></i> Sign up</a>
+                </div>
+            @else
+                <form method="POST" action="{{ route('logout') }}" class="border-l border-slate-200 pl-3">
+                    @csrf
+                    <button class="inline-flex min-h-[42px] items-center gap-2 rounded-lg px-3 text-[11px] font-bold text-navy transition hover:bg-slate-100 hover:text-teal" type="submit"><i class="fa-solid fa-arrow-right-from-bracket text-[10px]" aria-hidden="true"></i> Log out</button>
+                </form>
+            @endguest
             <a href="{{ route('contact') }}#consultation" class="inline-flex min-h-[44px] items-center justify-center gap-3 rounded-xl bg-navy px-5 py-2 text-[11px] font-bold text-white transition hover:bg-teal">Book a Consultation <span aria-hidden="true">↗</span></a>
         </nav>
-        <div class="flex items-center gap-2 max-[767px]:gap-1.5 min-[1191px]:hidden">
+        <div class="flex items-center gap-2 max-[767px]:gap-1.5 min-[1280px]:hidden">
             <a class="grid h-[46px] w-[46px] place-items-center rounded-xl border border-line bg-white text-navy hover:bg-soft max-[767px]:h-[43px] max-[767px]:w-[43px]" href="{{ config('site.whatsapp') }}" aria-label="Contact us on WhatsApp"><x-icon name="chat" /></a>
             <button class="grid h-[46px] w-[46px] place-items-center rounded-xl border border-line bg-white text-navy hover:bg-soft" type="button" data-open-menu aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu">
                 <x-icon name="menu" /><span class="sr-only">Open navigation menu</span>
