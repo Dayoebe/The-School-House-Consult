@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminInboxController;
 use App\Http\Controllers\AdminProgramController;
 use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminSiteSettingController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeoController;
@@ -54,5 +55,6 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::post('/programs', [AdminProgramController::class, 'store'])->name('programs.store');
         Route::patch('/programs/{programId}', [AdminProgramController::class, 'update'])->name('programs.update');
         Route::delete('/programs/{programId}', [AdminProgramController::class, 'destroy'])->name('programs.destroy');
+        Route::patch('/settings', [AdminSiteSettingController::class, 'update'])->name('settings.update');
     });
 });

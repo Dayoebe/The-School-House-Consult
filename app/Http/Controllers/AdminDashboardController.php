@@ -90,6 +90,7 @@ class AdminDashboardController extends Controller
             'programsForAdmin' => $section === 'programs' ? Program::query()->with('images')->latest()->get() : collect(),
             'messages' => ContactMessage::query()->latest()->get(),
             'users' => User::query()->latest()->get(),
+            'siteSettings' => config('site'),
         ]);
     }
 

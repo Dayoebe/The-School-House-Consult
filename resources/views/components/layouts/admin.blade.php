@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>{{ $title ?? 'Admin dashboard' }} | The School House Consult</title>
+    <title>{{ $title ?? 'Admin dashboard' }} | {{ config('site.name') }}</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#0b2a5b">
     <link rel="icon" href="{{ asset('images/brand/icon-32.png') }}" type="image/png" sizes="32x32">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>{{ $seo['title'] ?? ($title ?? 'Education Consulting') }} | The School House Consult</title>
+    <title>{{ $seo['title'] ?? ($title ?? 'Education Consulting') }} | {{ config('site.name') }}</title>
     <meta name="description" content="{{ $seo['description'] ?? ($description ?? config('site.mission')) }}">
     <meta name="robots" content="{{ $seo['robots'] ?? ($robots ?? 'index, follow') }}">
     @if (config('site.google_site_verification'))
@@ -14,10 +14,10 @@
         <meta name="msvalidate.01" content="{{ config('site.bing_site_verification') }}">
     @endif
     <link rel="canonical" href="{{ $seo['canonical'] ?? ($canonical ?? url()->current()) }}">
-    <meta property="og:site_name" content="The School House Consult">
+    <meta property="og:site_name" content="{{ config('site.name') }}">
     <meta property="og:locale" content="en_NG">
     <meta property="og:type" content="{{ $seo['type'] ?? 'website' }}">
-    <meta property="og:title" content="{{ $seo['title'] ?? 'The School House Consult' }}">
+    <meta property="og:title" content="{{ $seo['title'] ?? config('site.name') }}">
     <meta property="og:description" content="{{ $seo['description'] ?? config('site.mission') }}">
     <meta property="og:url" content="{{ $seo['canonical'] ?? url()->current() }}">
     <meta property="og:image" content="{{ $seo['image'] ?? asset('images/social-card.png') }}">
@@ -28,7 +28,7 @@
     <meta property="og:image:alt"
         content="{{ $seo['imageAlt'] ?? 'The School House Consult — Shaping the Future of Education' }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $seo['title'] ?? 'The School House Consult' }}">
+    <meta name="twitter:title" content="{{ $seo['title'] ?? config('site.name') }}">
     <meta name="twitter:description" content="{{ $seo['description'] ?? config('site.mission') }}">
     <meta name="twitter:image" content="{{ $seo['image'] ?? asset('images/social-card.png') }}">
     <meta name="twitter:image:alt"
