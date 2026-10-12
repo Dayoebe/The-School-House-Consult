@@ -35,8 +35,14 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
+        /** @var User $user */
+        $user = Auth::user();
 
-        return redirect()->intended(Auth::user()->isAdmin() ? route('admin.dashboard') : route('home'));
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->intended(route('home'));
     }
 
     public function showRegister(): View|RedirectResponse
