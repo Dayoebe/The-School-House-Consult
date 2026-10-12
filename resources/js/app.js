@@ -2,6 +2,32 @@ import 'animate.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Livewire provides Alpine. The application shell uses native browser controls.
+const installationStorageKey = 'school-house-consult-installed';
+const isRunningAsInstalledApp = () => window.matchMedia('(display-mode: standalone)').matches
+    || window.matchMedia('(display-mode: fullscreen)').matches
+    || window.matchMedia('(display-mode: window-controls-overlay)').matches
+    || window.navigator.standalone === true;
+const hasInstalledApp = () => {
+    if (isRunningAsInstalledApp()) return true;
+
+    try {
+        return window.localStorage.getItem(installationStorageKey) === 'true';
+    } catch {
+        return false;
+    }
+};
+const rememberInstalledApp = () => {
+    try {
+        window.localStorage.setItem(installationStorageKey, 'true');
+    } catch {
+        // Installation state still remains accurate for this standalone session.
+    }
+};
+const hideInstallationUi = () => {
+    document.querySelectorAll('[data-install-app]').forEach((element) => { element.hidden = true; });
+    document.querySelector('[data-install-help]')?.close();
+};
+
 const initialiseShell = () => {
     const menu = document.querySelector('#mobile-menu');
     const menuButtons = document.querySelectorAll('[data-open-menu]');
@@ -51,10 +77,12 @@ const initialiseShell = () => {
     reflectConnection();
 
     const installHelp = document.querySelector('[data-install-help]');
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent)
         || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
-    if (!isStandalone && (installationPrompt || isIos)) {
+    if (isRunningAsInstalledApp()) rememberInstalledApp();
+    if (hasInstalledApp()) {
+        hideInstallationUi();
+    } else if (installationPrompt || isIos) {
         document.querySelectorAll('[data-install-app]').forEach((button) => { button.hidden = false; });
     }
     document.querySelectorAll('[data-close-install-help]').forEach((button) => button.addEventListener('click', () => installHelp?.close()));
@@ -160,13 +188,17 @@ const initialiseShell = () => {
 let installationPrompt = null;
 window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
+    if (hasInstalledApp()) {
+        hideInstallationUi();
+        return;
+    }
     installationPrompt = event;
     document.querySelectorAll('[data-install-app]').forEach((button) => { button.hidden = false; });
 });
 window.addEventListener('appinstalled', () => {
     installationPrompt = null;
-    document.querySelectorAll('[data-install-app]').forEach((element) => { element.hidden = true; });
-    document.querySelector('[data-install-help]')?.close();
+    rememberInstalledApp();
+    hideInstallationUi();
 });
 document.addEventListener('click', async (event) => {
     const button = event.target.closest('[data-install-app]');

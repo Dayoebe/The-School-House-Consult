@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[data-install-app][hidden] {
+    display: none !important;
+}
+
 @layer components {
     .rich-text-editor:empty::before {
         color: rgb(148 163 184);
