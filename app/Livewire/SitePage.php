@@ -9,6 +9,7 @@ use App\Models\Faq;
 use App\Models\Program;
 use App\Models\Service;
 use App\Models\TeamMember;
+use App\Support\PublicSeo;
 use App\Support\RichText;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Locked;
@@ -59,6 +60,7 @@ class SitePage extends Component
             'contact' => ['Contact & Request a Consultation', 'Discuss your educational challenge with The School House Consult. Contact our Akure office or submit a consultation request.'],
         ];
         $data = [];
+        $record = null;
         if (in_array($this->page, ['home', 'about', 'services.index', 'services.show'])) {
             $data['services'] = Service::published()->orderBy('sort_order')->get();
         }
@@ -117,7 +119,16 @@ class SitePage extends Component
         if ($query) {
             $canonical .= '?'.http_build_query($query);
         }
+        $seo = PublicSeo::page(
+            $this->page,
+            $title,
+            $description,
+            $canonical,
+            $image,
+            $record,
+            isset($data['faqs']) ? $data['faqs']->all() : [],
+        );
 
-        return view('livewire.site-page', $data)->layout('layouts.app', compact('title', 'description', 'canonical', 'image', 'publishedArticle'));
+        return view('livewire.site-page', $data)->layout('layouts.app', compact('seo'));
     }
 }

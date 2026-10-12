@@ -4,25 +4,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>{{ $title ?? 'Education Consulting' }} | The School House Consult</title>
-    <meta name="description" content="{{ $description ?? config('site.mission') }}">
-    <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
+    <title>{{ $seo['title'] ?? ($title ?? 'Education Consulting') }} | The School House Consult</title>
+    <meta name="description" content="{{ $seo['description'] ?? ($description ?? config('site.mission')) }}">
+    <meta name="robots" content="{{ $seo['robots'] ?? ($robots ?? 'index, follow') }}">
+    @if (config('site.google_site_verification'))
+        <meta name="google-site-verification" content="{{ config('site.google_site_verification') }}">
+    @endif
+    @if (config('site.bing_site_verification'))
+        <meta name="msvalidate.01" content="{{ config('site.bing_site_verification') }}">
+    @endif
+    <link rel="canonical" href="{{ $seo['canonical'] ?? ($canonical ?? url()->current()) }}">
     <meta property="og:site_name" content="The School House Consult">
-    <meta property="og:type" content="{{ isset($publishedArticle) ? 'article' : 'website' }}">
-    <meta property="og:title" content="{{ $title ?? 'The School House Consult' }}">
-    <meta property="og:description" content="{{ $description ?? config('site.mission') }}">
-    <meta property="og:url" content="{{ $canonical ?? url()->current() }}">
-    <meta property="og:image" content="{{ $image ?? asset('images/social-card.png') }}">
-    <meta property="og:image:alt" content="The School House Consult — Shaping the Future of Education">
+    <meta property="og:locale" content="en_NG">
+    <meta property="og:type" content="{{ $seo['type'] ?? 'website' }}">
+    <meta property="og:title" content="{{ $seo['title'] ?? 'The School House Consult' }}">
+    <meta property="og:description" content="{{ $seo['description'] ?? config('site.mission') }}">
+    <meta property="og:url" content="{{ $seo['canonical'] ?? url()->current() }}">
+    <meta property="og:image" content="{{ $seo['image'] ?? asset('images/social-card.png') }}">
+    <meta property="og:image:secure_url" content="{{ $seo['image'] ?? asset('images/social-card.png') }}">
+    <meta property="og:image:type" content="{{ $seo['imageType'] ?? 'image/png' }}">
+    <meta property="og:image:width" content="{{ $seo['imageWidth'] ?? 1200 }}">
+    <meta property="og:image:height" content="{{ $seo['imageHeight'] ?? 630 }}">
+    <meta property="og:image:alt"
+        content="{{ $seo['imageAlt'] ?? 'The School House Consult — Shaping the Future of Education' }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $title ?? 'The School House Consult' }}">
-    <meta name="twitter:description" content="{{ $description ?? config('site.mission') }}">
-    <meta name="twitter:image" content="{{ $image ?? asset('images/social-card.png') }}">
+    <meta name="twitter:title" content="{{ $seo['title'] ?? 'The School House Consult' }}">
+    <meta name="twitter:description" content="{{ $seo['description'] ?? config('site.mission') }}">
+    <meta name="twitter:image" content="{{ $seo['image'] ?? asset('images/social-card.png') }}">
+    <meta name="twitter:image:alt"
+        content="{{ $seo['imageAlt'] ?? 'The School House Consult — Shaping the Future of Education' }}">
     <meta name="theme-color" content="#0B2A5B">
     <meta name="color-scheme" content="light">
-    @isset($robots)
-        <meta name="robots" content="{{ $robots }}">
-    @endisset
+    <link rel="alternate" type="application/rss+xml" title="School House Consult education insights"
+        href="{{ route('feed') }}">
     <link rel="icon" href="{{ asset('images/brand/icon-32.png') }}" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="{{ asset('images/brand/icon-180.png') }}" sizes="180x180">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
@@ -37,9 +51,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script type="application/ld+json">{!! json_encode(['@context'=>'https://schema.org', '@type'=>'Organization', 'name'=>config('site.name'), 'logo'=>asset(config('site.logo')), 'url'=>url('/'), 'description'=>config('site.mission'), 'email'=>config('site.email'), 'telephone'=>array_values(config('site.phones')), 'address'=>['@type'=>'PostalAddress','streetAddress'=>'First Floor Ekundayo House, Oda Road','addressLocality'=>'Akure','addressRegion'=>'Ondo State','addressCountry'=>'NG']], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
-    @isset($publishedArticle)
-        <script type="application/ld+json">{!! json_encode(array_filter(['@context'=>'https://schema.org','@type'=>'Article','headline'=>$publishedArticle->title,'description'=>$publishedArticle->excerpt,'datePublished'=>$publishedArticle->published_at->toIso8601String(),'dateModified'=>$publishedArticle->updated_at->toIso8601String(),'author'=>$publishedArticle->author ? ['@type'=>'Person','name'=>$publishedArticle->author] : null,'mainEntityOfPage'=>$canonical,'image'=>$image]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
+    @isset($seo['schema'])
+        <script type="application/ld+json">{!! json_encode($seo['schema'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
     @endisset
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

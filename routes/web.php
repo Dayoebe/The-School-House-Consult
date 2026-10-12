@@ -8,7 +8,10 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeoController;
 use App\Livewire\SitePage;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 Route::get('/', SitePage::class)->name('home');
 Route::get('/about', SitePage::class)->name('about');
@@ -24,9 +27,12 @@ Route::get('/case-studies', SitePage::class)->name('case-studies.index');
 Route::get('/case-studies/{caseStudy:slug}', SitePage::class)->name('case-studies.show');
 Route::get('/faq', SitePage::class)->name('faq');
 Route::get('/contact', SitePage::class)->name('contact');
-Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
-
-Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
+Route::withoutMiddleware([PreventRequestForgery::class, StartSession::class, ShareErrorsFromSession::class])->group(function (): void {
+    Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+    Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
+    Route::get('/feed.xml', [SeoController::class, 'feed'])->name('feed');
+    Route::get('/llms.txt', [SeoController::class, 'llms'])->name('llms');
+});
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.store');
