@@ -1,12 +1,12 @@
-<x-layouts.admin title="Create account">
-    <main class="relative isolate flex min-h-screen items-center overflow-hidden bg-[#f6f1e8] px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+@component('layouts.app', [
+    'title' => 'Create account',
+    'description' => 'Create your School House Consult account.',
+    'canonical' => route('register'),
+    'robots' => 'noindex, nofollow, noarchive',
+])
+    <section class="relative isolate flex min-h-[calc(100vh-8rem)] items-center overflow-hidden bg-[#f6f1e8] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div class="absolute -left-28 top-8 -z-10 h-80 w-80 rounded-full bg-orange/15 blur-3xl" aria-hidden="true"></div>
         <div class="absolute -right-24 bottom-0 -z-10 h-96 w-96 rounded-full bg-teal/15 blur-3xl" aria-hidden="true"></div>
-
-        <a class="absolute left-5 top-5 z-20 inline-flex min-h-11 items-center gap-2 rounded-full border border-navy/10 bg-white/85 px-4 text-xs font-extrabold text-navy shadow-sm backdrop-blur transition hover:border-orange hover:text-orange sm:left-8 sm:top-8" href="{{ route('home') }}">
-            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-            Back to website
-        </a>
 
         <section class="mx-auto grid w-full max-w-6xl overflow-hidden rounded-[30px] border border-white/80 bg-white shadow-[0_30px_100px_rgba(11,42,91,.18)] lg:min-h-[760px] lg:grid-cols-[.95fr_1.05fr]" aria-labelledby="register-title">
             <div class="flex items-center px-6 py-10 sm:px-12 lg:px-16 lg:py-14">
@@ -83,5 +83,5 @@
                 </div>
             </div>
         </section>
-    </main>
-</x-layouts.admin>
+    </section>
+@endcomponent
