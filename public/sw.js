@@ -1,4 +1,4 @@
-const CACHE_NAME = 'school-house-consult-assets-v2';
+const CACHE_NAME = 'school-house-consult-assets-v3';
 const base = new URL('./', self.location.href);
 const localUrl = (path) => new URL(path, base).href;
 const offlineUrl = localUrl('offline.html');
@@ -8,6 +8,7 @@ const coreAssets = [
     localUrl('images/brand/School_House_Logo.png'),
     localUrl('images/brand/icon-180.png'),
     localUrl('images/brand/icon-192.png'),
+    localUrl('images/brand/icon-256.png'),
     localUrl('images/brand/icon-512.png'),
     localUrl('images/brand/icon-maskable-192.png'),
     localUrl('images/brand/icon-maskable-512.png'),

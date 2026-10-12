@@ -52,7 +52,8 @@ const initialiseShell = () => {
 
     const installHelp = document.querySelector('[data-install-help]');
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+    const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent)
+        || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
     if (!isStandalone && (installationPrompt || isIos)) {
         document.querySelectorAll('[data-install-app]').forEach((button) => { button.hidden = false; });
     }
@@ -171,7 +172,8 @@ document.addEventListener('click', async (event) => {
     const button = event.target.closest('[data-install-app]');
     if (!button) return;
     if (!installationPrompt) {
-        const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+        const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent)
+            || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
         if (isIos) document.querySelector('[data-install-help]')?.showModal();
         return;
     }
