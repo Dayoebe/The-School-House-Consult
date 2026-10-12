@@ -1,20 +1,87 @@
 <x-layouts.admin title="Create account">
-    <main class="grid min-h-screen place-items-center bg-[linear-gradient(135deg,#10243d,#0f766e)] px-5 py-12">
-        <section class="w-full max-w-md rounded-[28px] border border-white/10 bg-white p-8 shadow-[0_25px_80px_rgba(0,0,0,.25)] sm:p-10">
-            <a class="font-display text-xs font-bold uppercase tracking-[.14em] text-navy" href="{{ route('home') }}">The School House <span class="text-coral">Consult.</span></a>
-            <p class="mt-10 text-xs font-bold uppercase tracking-[.18em] text-teal">Join the community</p>
-            <h1 class="mt-3 font-display text-4xl font-semibold leading-none tracking-[-.05em] text-navy">Make your mark.</h1>
-            <p class="mt-4 text-sm leading-6 text-muted">Create an account to stay connected to ideas, resources and the people shaping education.</p>
-            @if ($errors->any())<div class="mt-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700" role="alert"><ul class="list-disc space-y-1 pl-5">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
-            <form method="POST" action="{{ route('register.store') }}" class="mt-7 space-y-5">
-                @csrf
-                <div><label class="mb-2 block text-sm font-semibold text-navy" for="name">Full name</label><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="name" name="name" type="text" value="{{ old('name') }}" required autofocus autocomplete="name"></div>
-                <div><label class="mb-2 block text-sm font-semibold text-navy" for="email">Email address</label><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="email" name="email" type="email" value="{{ old('email') }}" required autocomplete="email"></div>
-                <div x-data="{ showPassword: false }"><label class="mb-2 block text-sm font-semibold text-navy" for="password">Password</label><div class="relative"><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 pl-4 pr-12 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="password" name="password" :type="showPassword ? 'text' : 'password'" required minlength="8" autocomplete="new-password"><button class="absolute inset-y-0 right-0 grid w-12 place-items-center text-muted transition hover:text-teal" type="button" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Hide password' : 'Show password'" :title="showPassword ? 'Hide password' : 'Show password'"><i class="fa-solid" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i></button></div></div>
-                <div x-data="{ showPassword: false }"><label class="mb-2 block text-sm font-semibold text-navy" for="password_confirmation">Confirm password</label><div class="relative"><input class="min-h-12 w-full rounded-xl border border-[#cbd8d2] bg-[#fbfdfb] px-4 pl-4 pr-12 text-sm outline-none transition focus:border-teal focus:ring-4 focus:ring-teal/10" id="password_confirmation" name="password_confirmation" :type="showPassword ? 'text' : 'password'" required minlength="8" autocomplete="new-password"><button class="absolute inset-y-0 right-0 grid w-12 place-items-center text-muted transition hover:text-teal" type="button" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Hide password' : 'Show password'" :title="showPassword ? 'Hide password' : 'Show password'"><i class="fa-solid" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i></button></div></div>
-                <button class="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-coral px-5 text-sm font-bold text-white shadow-lg shadow-coral/20 transition hover:-translate-y-0.5 hover:bg-[#df5e51]" type="submit">Create account <i class="fa-solid fa-user-plus" aria-hidden="true"></i></button>
-            </form>
-            <p class="mt-7 text-center text-sm text-muted">Already registered? <a class="font-bold text-teal hover:text-coral" href="{{ route('login') }}">Log in</a></p>
+    <main class="relative isolate flex min-h-screen items-center overflow-hidden bg-[#f6f1e8] px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+        <div class="absolute -left-28 top-8 -z-10 h-80 w-80 rounded-full bg-orange/15 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -right-24 bottom-0 -z-10 h-96 w-96 rounded-full bg-teal/15 blur-3xl" aria-hidden="true"></div>
+
+        <a class="absolute left-5 top-5 z-20 inline-flex min-h-11 items-center gap-2 rounded-full border border-navy/10 bg-white/85 px-4 text-xs font-extrabold text-navy shadow-sm backdrop-blur transition hover:border-orange hover:text-orange sm:left-8 sm:top-8" href="{{ route('home') }}">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            Back to website
+        </a>
+
+        <section class="mx-auto grid w-full max-w-6xl overflow-hidden rounded-[30px] border border-white/80 bg-white shadow-[0_30px_100px_rgba(11,42,91,.18)] lg:min-h-[760px] lg:grid-cols-[.95fr_1.05fr]" aria-labelledby="register-title">
+            <div class="flex items-center px-6 py-10 sm:px-12 lg:px-16 lg:py-14">
+                <div class="w-full">
+                    <p class="text-[10px] font-extrabold uppercase tracking-[.2em] text-orange">Join School House</p>
+                    <h1 id="register-title" class="mt-3 text-4xl font-extrabold leading-none tracking-[-.05em] text-navy sm:text-5xl">Create your account.</h1>
+                    <p class="mt-4 text-sm leading-6 text-muted">A few details and you’ll be ready to get started.</p>
+
+                    @if ($errors->any())
+                        <div class="mt-6 flex gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-800" role="alert">
+                            <i class="fa-solid fa-circle-exclamation mt-1 shrink-0" aria-hidden="true"></i>
+                            <ul class="list-disc space-y-1 pl-4">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('register.store') }}" class="mt-8 grid gap-5 sm:grid-cols-2">
+                        @csrf
+                        <div class="sm:col-span-2">
+                            <label class="mb-2 block text-xs font-extrabold text-navy" for="name">Full name</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                                <input class="min-h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/80 pl-12 pr-4 text-sm text-ink outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" id="name" name="name" type="text" value="{{ old('name') }}" placeholder="Your full name" required autofocus autocomplete="name">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="mb-2 block text-xs font-extrabold text-navy" for="email">Email address</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                                <input class="min-h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/80 pl-12 pr-4 text-sm text-ink outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" id="email" name="email" type="email" value="{{ old('email') }}" placeholder="you@example.com" required autocomplete="email">
+                            </div>
+                        </div>
+                        <div x-data="{ showPassword: false }">
+                            <label class="mb-2 block text-xs font-extrabold text-navy" for="password">Password</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                                <input class="min-h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/80 pl-12 pr-12 text-sm text-ink outline-none transition hover:border-slate-300 focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" id="password" name="password" :type="showPassword ? 'text' : 'password'" required minlength="8" autocomplete="new-password">
+                                <button class="absolute inset-y-0 right-0 grid w-12 place-items-center rounded-r-2xl text-slate-400 transition hover:text-teal focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal" type="button" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Hide password' : 'Show password'" :title="showPassword ? 'Hide password' : 'Show password'"><i class="fa-solid" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i></button>
+                            </div>
+                            <p class="mt-2 text-[10px] leading-4 text-slate-500">Use at least 8 characters.</p>
+                        </div>
+                        <div x-data="{ showPassword: false }">
+                            <label class="mb-2 block text-xs font-extrabold text-navy" for="password_confirmation">Confirm password</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-shield-halved absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                                <input class="min-h-14 w-full rounded-2xl border border-slate-200 bg-slate-50/80 pl-12 pr-12 text-sm text-ink outline-none transition hover:border-slate-300 focus:border-teal focus:bg-white focus:ring-4 focus:ring-teal/10" id="password_confirmation" name="password_confirmation" :type="showPassword ? 'text' : 'password'" required minlength="8" autocomplete="new-password">
+                                <button class="absolute inset-y-0 right-0 grid w-12 place-items-center rounded-r-2xl text-slate-400 transition hover:text-teal focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal" type="button" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Hide password' : 'Show password'" :title="showPassword ? 'Hide password' : 'Show password'"><i class="fa-solid" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <button class="group flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-orange px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(244,123,32,.28)] transition hover:-translate-y-0.5 hover:bg-[#dc6810] focus:outline-none focus:ring-4 focus:ring-orange/25 sm:col-span-2" type="submit">
+                            Create account
+                            <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1" aria-hidden="true"></i>
+                        </button>
+                    </form>
+
+                    <p class="mt-7 text-center text-sm text-muted">Already registered? <a class="font-extrabold text-teal underline decoration-teal/20 underline-offset-4 transition hover:text-orange" href="{{ route('login') }}">Log in instead</a></p>
+                </div>
+            </div>
+
+            <div class="relative order-first flex min-h-[270px] flex-col justify-between overflow-hidden bg-navy p-7 text-white sm:min-h-[340px] sm:p-10 lg:order-last lg:min-h-full lg:p-12">
+                <div class="absolute inset-0 opacity-25" aria-hidden="true">
+                    <img class="h-full w-full object-cover" src="{{ asset('images/illustrations/education-collaboration-1536.webp') }}" alt="">
+                </div>
+                <div class="absolute inset-0 bg-[linear-gradient(145deg,rgba(11,42,91,.7),rgba(11,42,91,.97)_72%)]" aria-hidden="true"></div>
+                <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full border-[42px] border-white/5" aria-hidden="true"></div>
+
+                <div class="relative z-10">
+                    <x-brand :footer="true" />
+                </div>
+
+                <div class="relative z-10 mt-12 max-w-md lg:mt-auto">
+                    <p class="flex items-center gap-3 text-[10px] font-extrabold uppercase tracking-[.22em] text-[#7bd7c4]"><span class="h-px w-8 bg-[#7bd7c4]"></span>A connected community</p>
+                    <h2 class="mt-4 max-w-sm text-3xl font-extrabold leading-[1.08] tracking-[-.04em] sm:text-4xl">Make room for better educational ideas.</h2>
+                    <p class="mt-5 max-w-sm text-sm leading-7 text-slate-300">Create your account to stay connected to resources, programmes and School House Consult.</p>
+                </div>
+            </div>
         </section>
     </main>
 </x-layouts.admin>
