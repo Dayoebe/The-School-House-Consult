@@ -4,11 +4,11 @@
 <div><p class="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[.15em] text-[#ffc89f]"><i class="fa-solid fa-comments" aria-hidden="true"></i> Contact The School House Consult</p><h1 class="mt-6 max-w-[760px] text-[clamp(42px,6vw,72px)] font-extrabold leading-[1.02] tracking-[-.055em]">A stronger institution can begin with one conversation.</h1><p class="mt-6 max-w-[680px] text-[17px] leading-8 text-slate-300">Tell us what your school, board or educational organisation is working towards. We will listen, understand the context and help you identify an appropriate next step.</p><div class="mt-8 flex flex-wrap gap-3"><a class="rounded-xl bg-orange px-5 py-3 text-[12px] font-extrabold text-slate-950" href="#consultation">Request a consultation</a><a class="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-[12px] font-bold text-white" href="{{ config('site.whatsapp') }}"><i class="fa-brands fa-whatsapp mr-2 text-[#55df88]" aria-hidden="true"></i>Chat on WhatsApp</a></div></div>
 <div class="grid grid-cols-2 gap-3 max-[480px]:grid-cols-1">
 @foreach([
-['Phone','0706-222-0159','tel:+2347062220159','fa-phone','bg-blue-500/10 text-blue-200 border-blue-300/20'],
-['Email','Send us an email','mailto:'.config('site.email'),'fa-envelope','bg-orange/10 text-orange-100 border-orange/20'],
-['Location','Oda Road, Akure','#location','fa-location-dot','bg-emerald-500/10 text-emerald-100 border-emerald-300/20'],
-['Consultation','Tell us your needs','#consultation','fa-calendar-check','bg-purple-500/10 text-purple-100 border-purple-300/20'],
-] as [$title,$label,$href,$icon,$style])<a class="rounded-2xl border p-5 transition hover:-translate-y-1 {{ $style }}" href="{{ $href }}"><span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10"><i class="fa-solid {{ $icon }}" aria-hidden="true"></i></span><p class="mt-4 text-[10px] font-extrabold uppercase tracking-widest opacity-70">{{ $title }}</p><p class="mt-1 text-[13px] font-bold text-white">{{ $label }}</p></a>@endforeach
+['Phone','0706-222-0159','tel:+2347062220159','fa-phone','border-blue-200','bg-blue-100 text-blue-700'],
+['Email','Send us an email','mailto:'.config('site.email'),'fa-envelope','border-orange-200','bg-orange/15 text-[#b5480a]'],
+['Location','Oda Road, Akure','#location','fa-location-dot','border-emerald-200','bg-emerald-100 text-emerald-700'],
+['Consultation','Tell us your needs','#consultation','fa-calendar-check','border-purple-200','bg-purple-100 text-purple-700'],
+] as [$title,$label,$href,$icon,$borderStyle,$iconStyle])<a class="group rounded-2xl border bg-white/90 p-5 shadow-[0_14px_35px_rgba(11,42,91,.08)] transition hover:-translate-y-1 hover:border-orange hover:shadow-[0_18px_45px_rgba(11,42,91,.14)] {{ $borderStyle }}" href="{{ $href }}"><span class="grid h-11 w-11 place-items-center rounded-xl text-[15px] {{ $iconStyle }}"><i class="fa-solid {{ $icon }}" aria-hidden="true"></i></span><p class="mt-4 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">{{ $title }}</p><p class="mt-1 text-[14px] font-extrabold text-navy transition group-hover:text-orange">{{ $label }}</p></a>@endforeach
 </div>
 </div></section>
 
