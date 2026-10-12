@@ -1,13 +1,69 @@
 <footer id="site-footer" class="relative overflow-hidden border-t border-slate-800 bg-slate-950 text-slate-100">
-<div class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-orange/10 blur-3xl"></div><div class="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-teal/10 blur-3xl"></div>
-<div class="relative mx-auto w-[calc(100%-48px)] max-w-7xl py-12 max-[640px]:w-[calc(100%-32px)]">
-<div class="mb-10 rounded-2xl border border-white/10 bg-white/[.05] p-6"><div class="flex items-center justify-between gap-8 max-[700px]:flex-col max-[700px]:items-start"><div><p class="text-[10px] font-extrabold uppercase tracking-widest text-[#ffb47d]">Ready to strengthen your institution?</p><h2 class="mt-2 text-[clamp(24px,3vw,36px)] font-extrabold tracking-[-.035em] text-white">Begin with a focused consultation.</h2><p class="mt-2 max-w-2xl text-[13px] leading-6 text-slate-400">Share your priorities with The School House Consult and let us identify a practical starting point together.</p></div><div class="flex gap-2 max-[460px]:grid max-[460px]:w-full"><a class="rounded-xl bg-orange px-5 py-3 text-center text-[12px] font-extrabold text-slate-950" href="{{ route('contact') }}#consultation">Request consultation</a><a class="rounded-xl border border-white/15 px-5 py-3 text-center text-[12px] font-bold text-white" href="{{ config('site.whatsapp') }}">WhatsApp us</a></div></div></div>
-<div class="grid grid-cols-4 gap-10 max-[900px]:grid-cols-2 max-[520px]:grid-cols-1">
-<div><x-brand footer /><p class="mt-4 text-[13px] italic text-[#ffb47d]">{{ config('site.tagline') }}</p><p class="mt-3 max-w-xs text-[12px] leading-6 text-slate-400">Strategic support for institutions, leaders and education stakeholders committed to meaningful progress.</p></div>
-<div><h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Quick links</h3><div class="mt-4 space-y-2">@foreach(['home'=>'Home','about'=>'About us','services.index'=>'Services','summer-spark'=>'Summer Spark','contact'=>'Contact'] as $route=>$label)<a class="block text-[12px] text-slate-300 hover:text-white" href="{{ route($route) }}">{{ $label }}</a>@endforeach</div></div>
-<div><h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Explore</h3><div class="mt-4 space-y-2">@foreach(['programs.index'=>'Programmes & training','team'=>'Leadership','resources.index'=>'Resources','case-studies.index'=>'Case studies','faq'=>'FAQs'] as $route=>$label)<a class="block text-[12px] text-slate-300 hover:text-white" href="{{ route($route) }}">{{ $label }}</a>@endforeach</div></div>
-<div><h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Contact information</h3><div class="mt-4 space-y-3 text-[12px] leading-6 text-slate-300"><p class="flex gap-2"><i class="fa-solid fa-location-dot mt-1 text-[#7bd7c4]" aria-hidden="true"></i>{{ config('site.address') }}</p>@foreach(config('site.phones') as $display=>$phone)<a class="flex gap-2" href="tel:{{ $phone }}"><i class="fa-solid fa-phone mt-1 text-[#7bd7c4]" aria-hidden="true"></i>{{ $display }}</a>@endforeach<a class="flex gap-2 break-all" href="mailto:{{ config('site.email') }}"><i class="fa-solid fa-envelope mt-1 text-[#7bd7c4]" aria-hidden="true"></i>{{ config('site.email') }}</a></div></div>
-</div>
-<div class="mt-10 flex justify-between gap-5 border-t border-white/10 pt-5 text-[10px] text-slate-500 max-[600px]:flex-col"><p>© {{ date('Y') }} <a href="https://dayoebe.github.io" target="_blank" rel="noopener noreferrer">Wireless Terminal</a>. All rights reserved.</p><a class="font-bold text-[#ffb47d]" href="#top">Back to top ↑</a></div>
-</div>
+    <div class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-orange/10 blur-3xl"></div>
+    <div class="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-teal/10 blur-3xl"></div>
+    <div class="relative mx-auto w-[calc(100%-48px)] max-w-7xl py-12 max-[640px]:w-[calc(100%-32px)]">
+        <div class="mb-10 rounded-2xl border border-white/10 bg-white/[.05] p-6">
+            <div class="flex items-center justify-between gap-8 max-[700px]:flex-col max-[700px]:items-start">
+                <div>
+                    <p class="text-[10px] font-extrabold uppercase tracking-widest text-[#ffb47d]">Ready to strengthen
+                        your institution?</p>
+                    <h2 class="mt-2 text-[clamp(24px,3vw,36px)] font-extrabold tracking-[-.035em] text-white">Begin with
+                        a focused consultation.</h2>
+                    <p class="mt-2 max-w-2xl text-[13px] leading-6 text-slate-400">Share your priorities with The School
+                        House Consult and let us identify a practical starting point together.</p>
+                </div>
+                <div class="flex gap-2 max-[460px]:grid max-[460px]:w-full"><a
+                        class="rounded-xl bg-orange px-5 py-3 text-center text-[12px] font-extrabold text-slate-950"
+                        href="{{ route('contact') }}#consultation">Request consultation</a><a
+                        class="rounded-xl border border-white/15 px-5 py-3 text-center text-[12px] font-bold text-white"
+                        href="{{ config('site.whatsapp') }}">WhatsApp us</a></div>
+            </div>
+        </div>
+        <div class="grid grid-cols-4 gap-10 max-[900px]:grid-cols-2 max-[520px]:grid-cols-1">
+            <div><x-brand footer />
+                <p class="mt-4 text-[13px] italic text-[#ffb47d]">{{ config('site.tagline') }}</p>
+                <p class="mt-3 max-w-xs text-[12px] leading-6 text-slate-400">Strategic support for institutions,
+                    leaders and education stakeholders committed to meaningful progress.</p>
+            </div>
+            <div>
+                <h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Quick links</h3>
+                <div class="mt-4 space-y-2">
+                    @foreach (['home' => 'Home', 'about' => 'About us', 'services.index' => 'Services', 'summer-spark' => 'Summer Spark', 'contact' => 'Contact'] as $route => $label)
+                        <a class="block text-[12px] text-slate-300 hover:text-white"
+                            href="{{ route($route) }}">{{ $label }}</a>
+                    @endforeach
+                </div>
+            </div>
+            <div>
+                <h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Explore</h3>
+                <div class="mt-4 space-y-2">
+                    @foreach (['programs.index' => 'Programmes & training', 'team' => 'Leadership', 'resources.index' => 'Resources', 'case-studies.index' => 'Case studies', 'faq' => 'FAQs'] as $route => $label)
+                        <a class="block text-[12px] text-slate-300 hover:text-white"
+                            href="{{ route($route) }}">{{ $label }}</a>
+                    @endforeach
+                </div>
+            </div>
+            <div>
+                <h3 class="text-[11px] font-extrabold uppercase tracking-wider text-[#ffb47d]">Contact information</h3>
+                <div class="mt-4 space-y-3 text-[12px] leading-6 text-slate-300">
+                    <p class="flex gap-2"><i class="fa-solid fa-location-dot mt-1 text-[#7bd7c4]"
+                            aria-hidden="true"></i>{{ config('site.address') }}</p>
+                    @foreach (config('site.phones') as $display => $phone)
+                        <a class="flex gap-2" href="tel:{{ $phone }}"><i
+                                class="fa-solid fa-phone mt-1 text-[#7bd7c4]"
+                                aria-hidden="true"></i>{{ $display }}</a>
+                    @endforeach
+                    <a class="flex gap-2 break-all" href="mailto:{{ config('site.email') }}"><i
+                            class="fa-solid fa-envelope mt-1 text-[#7bd7c4]"
+                            aria-hidden="true"></i>{{ config('site.email') }}</a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="mt-10 flex justify-between gap-5 border-t border-white/10 pt-5 text-[10px] text-slate-500 max-[600px]:flex-col">
+            <p>© {{ date('Y') }} <a href="https://dayoebe.github.io" target="_blank"
+                    rel="noopener noreferrer">Wireless Terminal</a>. All rights reserved.</p><a
+                class="font-bold text-[#ffb47d]" href="#top">Back to top ↑</a>
+        </div>
+    </div>
 </footer>
